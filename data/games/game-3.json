@@ -1,0 +1,20 @@
+{
+  "id": "game-3",
+  "title": "情報漏洩",
+  "catch": "手軽に遊べる、戦略ダイスゲーム",
+  "players": "3-4人",
+  "time": "3-15分",
+  "age": "8歳+",
+  "tags": ["ボードゲーム"],
+  "feature1": "特徴1（一覧に出す）",
+  "description": "ここにゲーム詳細説明を書きます（詳細ページ）。",
+  "images": [
+    "assets/images/placeholder.svg"
+  ],
+  "links": {
+    "rulesPdf": "",
+    "shopUrl": "",
+    "videoUrl": ""
+  },
+  "publishedAt": "2026-02-03"
+}

@@ -1,11 +1,71 @@
-<!DOCTYPE html>
-<html>
- <head>
-  <meta charset="UTF-8">
-  <title>サンプル</title>
- </head>
- <body>
-   <h1>HTML</h1>
-   <p>Hello World!</p>
- </body>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <title>Mottainai Games</title>
+  <meta name="description" content="自作ボードゲーム紹介サイト（Mottainai Games）" />
+</head>
+<body>
+  <header class="siteHeader container">
+    <div class="header">
+      <div class="brand">
+        <img class="logo" src="assets/images/ロゴ_260210_2.svg" alt="サークルロゴ" />
+        <div class="titleWrap">
+          <h1 class="title">Mottainai Games</h1>
+          <p class="subtitle">ボードゲーム紹介</p>
+        </div>
+      </div>
+      <nav class="nav" aria-label="ページ">
+        <a href="index.html" aria-current="page">トップ</a>
+        <a href="games.html">ゲーム一覧</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container homeMain">
+    <section class="cardtop" aria-label="サークルイメージ">
+      <img class="hero" src="assets/images/ロゴ_260210_1.svg" alt="サークルイメージ画像" />
+    </section>
+
+    <section id="newsSection" class="card" aria-label="お知らせ">
+      <h2>お知らせ</h2>
+      <ul id="newsList"></ul>
+    </section>
+
+    <section class="card" aria-label="最新ゲーム">
+      <h2>最新ゲーム</h2>
+      <div id="latestGame"></div>
+    </section>
+
+    <section class="card" aria-label="リンクと連絡先">
+      <h2>リンク＆連絡先</h2>
+
+        <p>
+          <a href="https://x.com/MottainaiGames" target="_blank" rel="noopener noreferrer">X（旧Twitter）</a>
+  /
+          <a href="https://gamemarket.jp/booth/5921" target="_blank" rel="noopener noreferrer">ゲームマーケット作品ページ</a>
+  /
+          <a href="mailto:あなたのメールアドレス">メール</a>
+        </p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div class="footerRow">
+      <div class="brand">
+        <small class="muted">© Mottainai Games</small>
+      </div>
+      <nav class="nav" aria-label="ページ">
+        <a href="index.html">トップ</a>
+        <a href="games.html">ゲーム一覧</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+  <script>window.MG.renderHome();</script>
+</body>
 </html>

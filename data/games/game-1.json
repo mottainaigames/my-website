@@ -1,0 +1,20 @@
+{
+  "id": "game-1",
+  "title": "定時退社",
+  "catch": "手軽に遊べる、戦略ババ抜き",
+  "players": "3-6人",
+  "time": "3-10分",
+  "age": "7歳+",
+  "tags": ["ボードゲーム"],
+  "feature1": "手軽に遊べる戦略ババ抜き",
+  "description": "ババ抜きのようにカードのペアを作る。カードにはさまざまな効果があるので、残業を押し付け合い、いち早くゲームから抜け出そう。\n最後に残業カード（ババ）を持っていた人の負けだ！また、残業カードが労基カードに見つかってしまっても負けてしまうよ！\n\n残業やパワハラはバレないようにしないとね！",
+  "images": [
+    "assets/images/placeholder.svg"
+  ],
+  "links": {
+    "rulesPdf": "",
+    "shopUrl": "https://hands.net/goods/4994460531777/?srsltid=afmboorsd8cdjfdrigu-phe3nb06jhk4r0e7os3cwsi4pahyhanigg36",
+    "videoUrl": ""
+  },
+  "publishedAt": "2026-02-01"
+}
