@@ -23,12 +23,12 @@
   "feature1_zh": "防止信息泄露！坚守公司机密信息的骰子游戏！",
   "description": "あなたの職場は大丈夫？\n日々ニュースで報道される、あの事件たちを追体験！？\nサイコロの出目に運命を翻弄され、最後までわからない！\n全企業人のためのダイスゲーム！",
   "description_en": "English version coming soon",
-  "description_zh": "中文版即将上线",
+  "description_zh": "中文版即将推出",
   "images": [
     "assets/images/game-3-package.png"
   ],
   "links": {
-    "rulesPdf": "",
+    "rulesPdf": "https://gamemarket.jp/game/188105",
     "shopUrl": "",
     "videoUrl": ""
   },
