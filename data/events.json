@@ -1,0 +1,22 @@
+{
+  "history": [
+    { "name": "ゲームマーケット2022春", "name_en": "Game Market 2022 Spring", "name_zh": "Game Market 2022 春", "status": "参加", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "ゲームマーケット2022秋", "name_en": "Game Market 2022 Autumn", "name_zh": "Game Market 2022 秋", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "ゲームマーケット2023秋", "name_en": "Game Market 2023 Autumn", "name_zh": "Game Market 2023 秋", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "Board Game Business Expo Japan2024", "name_en": "Board Game Business Expo Japan 2024", "name_zh": "Board Game Business Expo Japan 2024", "status": "出展", "location": "大阪", "location_en": "Osaka", "location_zh": "大阪" },
+    { "name": "ゲームマーケット2024春", "name_en": "Game Market 2024 Spring", "name_zh": "Game Market 2024 春", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "ゲームマーケット2024京都 in 京まふ", "name_en": "Game Market 2024 Kyoto in KYOMAF", "name_zh": "Game Market 2024 京都 in 京まふ", "status": "参加", "location": "京都", "location_en": "Kyoto", "location_zh": "京都" },
+    { "name": "spiel essen 2025", "name_en": "Spiel Essen 2025", "name_zh": "Spiel Essen 2025", "status": "参加", "location": "ドイツ", "location_en": "Germany", "location_zh": "德国" },
+    { "name": "ゲームマーケット2024秋", "name_en": "Game Market 2024 Autumn", "name_zh": "Game Market 2024 秋", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "Board Game Business Expo Japan2025", "name_en": "Board Game Business Expo Japan 2025", "name_zh": "Board Game Business Expo Japan 2025", "status": "出展", "location": "大阪", "location_en": "Osaka", "location_zh": "大阪" },
+    { "name": "ボドゲガレージ2025", "name_en": "Boardgame Garage 2025", "name_zh": "桌游车库 2025", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "ゲームマーケット2025春", "name_en": "Game Market 2025 Spring", "name_zh": "Game Market 2025 春", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "ゲームマーケット2025秋", "name_en": "Game Market 2025 Autumn", "name_zh": "Game Market 2025 秋", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "Board Game Business Expo Japan2026", "name_en": "Board Game Business Expo Japan 2026", "name_zh": "Board Game Business Expo Japan 2026", "status": "出展", "location": "大阪", "location_en": "Osaka", "location_zh": "大阪" }
+  ],
+  "upcoming": [
+    { "name": "さっぽろ卓ゲっと2026", "name_en": "Sapporo Taku-Get 2026", "name_zh": "札幌桌游展 2026", "status": "出展", "location": "北海道", "location_en": "Hokkaido", "location_zh": "北海道" },
+    { "name": "Taiwan Original Boardgame Expo2026", "name_en": "Taiwan Original Boardgame Expo 2026", "name_zh": "Taiwan Original Boardgame Expo 2026", "status": "出展", "location": "台湾", "location_en": "Taiwan", "location_zh": "台湾" },
+    { "name": "Gen Con2026", "name_en": "Gen Con 2026", "name_zh": "Gen Con 2026", "status": "参加", "location": "アメリカ", "location_en": "USA", "location_zh": "美国" }
+  ]
+}

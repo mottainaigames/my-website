@@ -12,47 +12,96 @@
 <body>
   <header class="siteHeader container">
     <div class="header">
-      <div class="brand">
-        <img class="logo" src="assets/images/ロゴ_260210_2.svg" alt="サークルロゴ" />
+      <a class="brand brandLink" href="index.html">
+        <img class="logo" src="assets/images/ロゴ_260210_2.svg" data-i18n-alt="a11y.circleLogo" alt="サークルロゴ" />
         <div class="titleWrap">
-          <h1 class="title">Mottainai Games</h1>
-          <p class="subtitle">ボードゲーム紹介</p>
+          <h1 class="title" data-i18n="brand.title">Mottainai Games</h1>
+          <p class="subtitle" data-i18n="brand.subtitle">ボードゲーム紹介</p>
         </div>
+      </a>
+      <div class="headerRight">
+        <nav class="nav" data-i18n-aria-label="a11y.nav" aria-label="ページ内ナビゲーション">
+          <a href="index.html" aria-current="page" data-i18n="nav.home" data-keep-lang="true">Home</a>
+          <a href="games.html" data-i18n="nav.game" data-keep-lang="true">Game</a>
+          <a href="news.html" data-i18n="nav.news" data-keep-lang="true">News</a>
+          <a href="contact.html" data-i18n="nav.contact" data-keep-lang="true">お問い合わせ</a>
+        </nav>
+        <nav class="langTabs" data-i18n-aria-label="a11y.langTabs" aria-label="言語切替">
+          <a href="?lang=ja" data-lang="ja" data-i18n="lang.ja">日本語</a>
+          <a href="?lang=en" data-lang="en" lang="en" data-i18n="lang.en">English</a>
+          <a href="?lang=zh" data-lang="zh" lang="zh" data-i18n="lang.zh">中文</a>
+        </nav>
       </div>
-      <nav class="nav" aria-label="ページ">
-        <a href="index.html" aria-current="page">トップ</a>
-        <a href="games.html">ゲーム一覧</a>
-      </nav>
     </div>
   </header>
 
   <main class="container homeMain">
-    <section class="cardtop" aria-label="サークルイメージ">
-      <img class="hero" src="assets/images/ロゴ_260210_1.svg" alt="サークルイメージ画像" />
+    <section id="productSection" class="homeSection section-product" data-i18n-aria-label="a11y.sectionProduct" aria-label="商品紹介とサークル紹介">
+      <div class="sectionHead">
+        <h2 data-i18n="product.heading">商品紹介 + サークル紹介</h2>
+        <p class="sectionLead" data-i18n="product.lead">制作中の作品と、Mottainai Gamesの活動内容を紹介します。</p>
+      </div>
+
+      <section id="homeCarouselSection" class="homeCarouselSection" data-i18n-aria-label="a11y.carousel" aria-label="作品カルーセル">
+        <div id="homeCarousel" class="homeCarousel">
+          <button id="homeCarouselPrev" class="homeCarouselArrow" type="button" data-i18n-aria-label="a11y.carouselPrev" aria-label="前の作品">&#10094;</button>
+          <div id="homeCarouselViewport" class="homeCarouselViewport">
+            <div id="homeCarouselTrack" class="homeCarouselTrack"></div>
+          </div>
+          <button id="homeCarouselNext" class="homeCarouselArrow" type="button" data-i18n-aria-label="a11y.carouselNext" aria-label="次の作品">&#10095;</button>
+        </div>
+        <div id="homeCarouselDots" class="homeCarouselDots" data-i18n-aria-label="a11y.carouselDots" aria-label="表示中の作品"></div>
+      </section>
+
+      <section class="aboutHero" data-i18n-aria-label="a11y.aboutHero" aria-label="サークル紹介">
+        <div class="aboutHeroMedia">
+          <img class="aboutHeroLogo" src="assets/images/mottainai-logo-white.png" data-i18n-alt="a11y.heroLogo" alt="Mottainai Games ロゴ" />
+        </div>
+        <div class="aboutHeroText">
+          <h3 data-i18n="intro.heading">サークル紹介</h3>
+          <p data-i18n-html="intro.body">2022年に設立されたサークルです！<br />
+          ボードゲームを製作しています！</p>
+        </div>
+      </section>
     </section>
 
-
-    <section class="card" aria-label="サークル紹介">
-      <h2>サークル紹介</h2>
-      <p>2022年に設立されたサークルです！<br />
-      ボードゲームを製作しています！</p>
+    <section id="newsSection" class="homeSection section-news" data-i18n-aria-label="a11y.newsSection" aria-label="お知らせ">
+      <div class="sectionHead">
+        <h2 data-i18n="news.heading">お知らせ</h2>
+        <p class="sectionLead" data-i18n="news.lead">最新の更新情報や公開情報を掲載します。</p>
+      </div>
+      <ul id="newsList" class="infoList"></ul>
     </section>
 
-    <section id="newsSection" class="card" aria-label="お知らせ">
-      <h2>お知らせ</h2>
-      <ul id="newsList"></ul>
+    <section id="eventsSection" class="homeSection section-events" data-i18n-aria-label="a11y.eventsSection" aria-label="出展・参加イベント">
+      <div class="sectionHead">
+        <h2 data-i18n="events.heading">出展・参加イベント</h2>
+        <p class="sectionLead" data-i18n="events.lead">これまでの活動実績と、今後の参加予定イベントです。</p>
+      </div>
+      <div class="eventsBlock">
+        <h3 class="eventsSubTitle" data-i18n="events.historyHeading">イベント出展・参加歴</h3>
+        <ul id="eventsHistoryList" class="eventsList"></ul>
+      </div>
+      <div class="eventsBlock">
+        <h3 class="eventsSubTitle" data-i18n="events.upcomingHeading">参加予定</h3>
+        <ul id="eventsUpcomingList" class="eventsList"></ul>
+      </div>
     </section>
 
-    <section class="card" aria-label="リンクと連絡先">
-      <h2>リンク＆連絡先</h2>
-
-        <p>
-          <a href="https://x.com/MottainaiGames" target="_blank" rel="noopener noreferrer">X（旧Twitter）</a>
-  /
-          <a href="https://gamemarket.jp/booth/5921" target="_blank" rel="noopener noreferrer">ゲームマーケット作品ページ</a>
-  /
-          <a href="mailto:あなたのメールアドレス">メール</a>
-        </p>
+    <section class="homeSection section-links" data-i18n-aria-label="a11y.linksSection" aria-label="リンクと連絡先">
+      <div class="sectionHead">
+        <h2 data-i18n="links.heading">リンク＆連絡先</h2>
+        <p class="sectionLead" data-i18n="links.lead">SNS・出展情報・お問い合わせ先はこちらです。</p>
+      </div>
+      <p class="linkRow">
+        <a href="https://x.com/MottainaiGames" target="_blank" rel="noopener noreferrer" data-i18n="links.x">X（旧Twitter）</a>
+        <span class="linkSep">/</span>
+        <a href="https://gamemarket.jp/booth/5921" target="_blank" rel="noopener noreferrer" data-i18n="links.gamemarket">ゲームマーケット作品ページ</a>
+        <span class="linkSep">/</span>
+        <a href="mailto:mottainai767+contact@gmail.com" data-i18n="links.mail">メール</a>
+        <span class="linkSep">/</span>
+        <a href="contact.html" data-keep-lang="true" data-i18n="links.contact">お問い合わせフォーム</a>
+      </p>
     </section>
   </main>
 
@@ -61,14 +110,16 @@
       <div class="brand">
         <small class="muted">© Mottainai Games</small>
       </div>
-      <nav class="nav" aria-label="ページ">
-        <a href="index.html">トップ</a>
-        <a href="games.html">ゲーム一覧</a>
+      <nav class="nav" data-i18n-aria-label="a11y.nav" aria-label="ページ内ナビゲーション">
+        <a href="index.html" data-i18n="nav.home" data-keep-lang="true">Home</a>
+        <a href="games.html" data-i18n="nav.game" data-keep-lang="true">Game</a>
+        <a href="news.html" data-i18n="nav.news" data-keep-lang="true">News</a>
+        <a href="contact.html" data-i18n="nav.contact" data-keep-lang="true">お問い合わせ</a>
       </nav>
     </div>
   </footer>
 
-  <script src="assets/js/site.js"></script>
+  <script src="assets/js/site.js?v=20260511d"></script>
   <script>window.MG.renderHome();</script>
 </body>
 </html>

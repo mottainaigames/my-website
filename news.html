@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" type="image/svg+xml" href="assets/images/ロゴ_260210_2.svg" />
 
-  <title>Mottainai Games - ゲーム一覧</title>
-  <meta name="description" content="自作ボードゲーム一覧（Mottainai Games）" />
+  <title>Mottainai Games - News</title>
+  <meta name="description" content="Mottainai Gamesのお知らせ一覧" />
 </head>
 <body>
   <header class="siteHeader container">
@@ -22,8 +22,8 @@
       <div class="headerRight">
         <nav class="nav" aria-label="ページ">
           <a href="index.html" data-keep-lang="true" data-i18n="nav.home">Home</a>
-          <a href="games.html" aria-current="page" data-keep-lang="true" data-i18n="nav.game">Game</a>
-          <a href="news.html" data-keep-lang="true" data-i18n="nav.news">News</a>
+          <a href="games.html" data-keep-lang="true" data-i18n="nav.game">Game</a>
+          <a href="news.html" aria-current="page" data-keep-lang="true" data-i18n="nav.news">News</a>
           <a href="contact.html" data-keep-lang="true" data-i18n="nav.contact">お問い合わせ</a>
         </nav>
         <nav class="langTabs" aria-label="言語切替">
@@ -35,9 +35,21 @@
     </div>
   </header>
 
-  <main class="container">
-    <section aria-label="ゲーム一覧">
-      <div id="gameGrid" class="grid" role="list"></div>
+  <main class="container homeMain">
+    <section class="homeSection section-news" aria-label="最新のお知らせ">
+      <div class="sectionHead">
+        <h2 data-i18n="news.latestHeading">最新のお知らせ</h2>
+        <p class="sectionLead" data-i18n="news.latestLead">最新3件を表示しています。</p>
+      </div>
+      <ul id="latestNewsList" class="newsCards"></ul>
+    </section>
+
+    <section class="homeSection section-product" aria-label="お知らせ記事">
+      <div class="sectionHead">
+        <h2 data-i18n="news.archiveHeading">お知らせ記事</h2>
+        <p class="sectionLead" data-i18n="news.archiveLead">過去のお知らせ一覧です。</p>
+      </div>
+      <ul id="archiveNewsList" class="newsList"></ul>
     </section>
   </main>
 
@@ -56,6 +68,6 @@
   </footer>
 
   <script src="assets/js/site.js?v=20260511d"></script>
-  <script>window.MG.renderGamesList();</script>
+  <script>window.MG.renderNewsPage();</script>
 </body>
 </html>

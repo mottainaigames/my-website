@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/ロゴ_260210_2.svg" />
+
+  <title>Mottainai Games - お問い合わせ</title>
+  <meta name="description" content="Mottainai Games へのお問い合わせ" />
+</head>
+<body>
+  <header class="siteHeader container">
+    <div class="header">
+      <a class="brand brandLink" href="index.html">
+        <img class="logo" src="assets/images/ロゴ_260210_2.svg" data-i18n-alt="a11y.circleLogo" alt="サークルロゴ" />
+        <div class="titleWrap">
+          <h1 class="title" data-i18n="brand.title">Mottainai Games</h1>
+          <p class="subtitle" data-i18n="brand.subtitle">ボードゲーム紹介</p>
+        </div>
+      </a>
+      <div class="headerRight">
+        <nav class="nav" data-i18n-aria-label="a11y.nav" aria-label="ページ内ナビゲーション">
+          <a href="index.html" data-keep-lang="true" data-i18n="nav.home">Home</a>
+          <a href="games.html" data-keep-lang="true" data-i18n="nav.game">Game</a>
+          <a href="news.html" data-keep-lang="true" data-i18n="nav.news">News</a>
+          <a href="contact.html" aria-current="page" data-keep-lang="true" data-i18n="nav.contact">お問い合わせ</a>
+        </nav>
+        <nav class="langTabs" data-i18n-aria-label="a11y.langTabs" aria-label="言語切替">
+          <a href="?lang=ja" data-lang="ja" data-i18n="lang.ja">日本語</a>
+          <a href="?lang=en" data-lang="en" lang="en" data-i18n="lang.en">English</a>
+          <a href="?lang=zh" data-lang="zh" lang="zh" data-i18n="lang.zh">中文</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container homeMain">
+    <section class="homeSection section-links" aria-label="お問い合わせ">
+      <div class="sectionHead">
+        <h2 data-i18n="contact.heading">お問い合わせ</h2>
+        <p class="sectionLead" data-i18n="contact.lead">Googleフォームからお問い合わせください。</p>
+      </div>
+
+      <!-- 運用: Googleフォーム → 送信 → <> → iframe の src をコピーし、assets/js/site.js の CONTACT_FORM_EMBED_URL に貼る -->
+      <p id="contactEmbedMissing" class="muted small contactHint" data-i18n="contact.embedMissing">お問い合わせフォームの表示設定が未完了です。</p>
+
+      <div class="googleFormWrap card">
+        <iframe
+          id="googleFormFrame"
+          class="googleFormEmbed"
+          hidden
+          title="お問い合わせフォーム"
+          data-i18n-title="contact.iframeTitle"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div class="footerRow">
+      <div class="brand">
+        <small class="muted">© Mottainai Games</small>
+      </div>
+      <nav class="nav" data-i18n-aria-label="a11y.nav" aria-label="ページ内ナビゲーション">
+        <a href="index.html" data-keep-lang="true" data-i18n="nav.home">Home</a>
+        <a href="games.html" data-keep-lang="true" data-i18n="nav.game">Game</a>
+        <a href="news.html" data-keep-lang="true" data-i18n="nav.news">News</a>
+        <a href="contact.html" aria-current="page" data-keep-lang="true" data-i18n="nav.contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js?v=20260511d"></script>
+  <script>window.MG.renderContactPage();</script>
+</body>
+</html>

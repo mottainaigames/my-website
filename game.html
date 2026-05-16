@@ -12,17 +12,26 @@
 <body>
   <header class="siteHeader container">
     <div class="header">
-      <div class="brand">
+      <a class="brand brandLink" href="index.html">
         <img class="logo" src="assets/images/ロゴ_260210_2.svg" alt="サークルロゴ" />
         <div class="titleWrap">
-          <h1 class="title">Mottainai Games</h1>
-          <p class="subtitle">個別ボードゲーム紹介</p>
+          <h1 class="title" data-i18n="brand.title">Mottainai Games</h1>
+          <p class="subtitle" data-i18n="brand.subtitle">ボードゲーム紹介</p>
         </div>
+      </a>
+      <div class="headerRight">
+        <nav class="nav" aria-label="ページ">
+          <a href="index.html" data-keep-lang="true" data-i18n="nav.home">Home</a>
+          <a href="games.html" aria-current="page" data-keep-lang="true" data-i18n="nav.game">Game</a>
+          <a href="news.html" data-keep-lang="true" data-i18n="nav.news">News</a>
+          <a href="contact.html" data-keep-lang="true" data-i18n="nav.contact">お問い合わせ</a>
+        </nav>
+        <nav class="langTabs" aria-label="言語切替">
+          <a href="?lang=ja" data-lang="ja" data-i18n="lang.ja">日本語</a>
+          <a href="?lang=en" data-lang="en" lang="en" data-i18n="lang.en">English</a>
+          <a href="?lang=zh" data-lang="zh" lang="zh" data-i18n="lang.zh">中文</a>
+        </nav>
       </div>
-      <nav class="nav" aria-label="ページ">
-        <a href="index.html">トップ</a>
-        <a href="games.html">ゲーム一覧</a>
-      </nav>
     </div>
   </header>
 
@@ -30,7 +39,7 @@
   <div class="card">
     <div class="detailBarTop">
       <h1 id="gameTitle" class="detailTitle">Loading...</h1>
-      <a class="closeBtn closeRight" href="games.html" aria-label="ゲーム一覧に戻る">✕</a>
+      <a class="closeBtn closeRight" href="games.html" aria-label="ゲーム一覧に戻る" data-i18n-aria-label="game.backToListAria">✕</a>
     </div>
     <p id="gameCatch" class="muted small"></p>
   </div>
@@ -40,28 +49,33 @@
     <section class="twoCol">
       <div class="card">
         <div class="carousel">
-          <button id="prevBtn" class="iconBtn" aria-label="前の画像">‹</button>
-          <img id="mainImage" class="mainImage" alt="ゲーム画像" />
-          <button id="nextBtn" class="iconBtn" aria-label="次の画像">›</button>
+          <button id="prevBtn" class="iconBtn" aria-label="前の画像" data-i18n-aria-label="game.prevImageAria">‹</button>
+          <img id="mainImage" class="mainImage" alt="ゲーム画像" data-i18n-alt="game.mainImageAlt" />
+          <button id="nextBtn" class="iconBtn" aria-label="次の画像" data-i18n-aria-label="game.nextImageAria">›</button>
         </div>
       </div>
 
       <div class="card">
-        <h2>基本情報</h2>
+        <h2 data-i18n="game.basicInfo">基本情報</h2>
         <dl class="meta">
-          <div id="playersRow"><dt>人数</dt><dd></dd></div>
-          <div id="timeRow"><dt>時間</dt><dd></dd></div>
-          <div id="ageRow"><dt>年齢</dt><dd></dd></div>
+          <div id="playersRow"><dt data-i18n="label.players">人数</dt><dd></dd></div>
+          <div id="timeRow"><dt data-i18n="label.time">時間</dt><dd></dd></div>
+          <div id="ageRow"><dt data-i18n="label.age">年齢</dt><dd></dd></div>
         </dl>
 
-        <h2>ゲーム詳細</h2>
+        <h2 data-i18n="game.descriptionHeading">ゲーム詳細</h2>
         <p id="description" class="muted"></p>
 
-        <h2>リンク</h2>
+        <div id="channelsBlock" class="channelsBlock" hidden>
+          <h2 data-i18n="game.channelsHeading">販売チャネル</h2>
+          <p id="channelsText" class="muted channelsText"></p>
+        </div>
+
+        <h2 data-i18n="game.linksHeading">リンク</h2>
         <div class="buttons" aria-label="リンク">
-          <a id="rulesBtn" class="btn" target="_blank" rel="noopener">説明書（PDF）</a>
-          <a id="videoBtn" class="btn" target="_blank" rel="noopener">動画</a>
-          <a id="shopBtn" class="btn" target="_blank" rel="noopener">ストア</a>
+          <a id="rulesBtn" class="btn" target="_blank" rel="noopener" data-i18n="game.rules">説明書（PDF）</a>
+          <a id="videoBtn" class="btn" target="_blank" rel="noopener" data-i18n="game.video">動画</a>
+          <a id="shopBtn" class="btn" target="_blank" rel="noopener" data-i18n="game.shop">ストア</a>
         </div>
 
       </div>
@@ -74,13 +88,15 @@
         <small class="muted">© Mottainai Games</small>
       </div>
       <nav class="nav" aria-label="ページ">
-        <a href="index.html">トップ</a>
-        <a href="games.html">ゲーム一覧</a>
+        <a href="index.html" data-keep-lang="true" data-i18n="nav.home">Home</a>
+        <a href="games.html" data-keep-lang="true" data-i18n="nav.game">Game</a>
+        <a href="news.html" data-keep-lang="true" data-i18n="nav.news">News</a>
+        <a href="contact.html" data-keep-lang="true" data-i18n="nav.contact">お問い合わせ</a>
       </nav>
     </div>
   </footer>
 
-  <script src="assets/js/site.js"></script>
+  <script src="assets/js/site.js?v=20260511d"></script>
   <script>window.MG.renderGame();</script>
 </body>
 </html>

@@ -1,8 +1,26 @@
 {
   "items": [
     {
+      "id": "teiji-taishoku-10k-sales",
+      "date": "2026-05-16",
+      "title": "「定時退社」累計販売1万部突破のお知らせ",
+      "title_en": "\"Leave on Time\" surpasses 10,000 units sold",
+      "title_zh": "「准时下班」累计销量突破1万部",
+      "text": "ボードゲーム「定時退社」の累計販売部数が1万部を超えました。ご購入・ご支援いただいた皆さま、ありがとうございます。",
+      "text_en": "Thank you to everyone who purchased and supported our board game \"Leave on Time\" — cumulative sales have exceeded 10,000 units.",
+      "text_zh": "桌面游戏《准时下班》累计销量已超过1万部。感谢各位的支持与购买。",
+      "detailPath": "game.html?id=game-1"
+    },
+    {
+      "id": "gm-2026-spring-selected",
       "date": "2026-03-06",
-      "text": "ゲームマーケット２０２６春に当選しました！"
+      "title": "ゲームマーケット2026春に当選しました",
+      "title_en": "We have been selected for Game Market 2026 Spring",
+      "title_zh": "我们已入选 Game Market 2026 春季展",
+      "text": "ゲームマーケット２０２６春に当選しました！",
+      "text_en": "We have been selected for Game Market 2026 Spring!",
+      "text_zh": "我们已入选 Game Market 2026 春季展！",
+      "detailPath": ""
     }
   ]
 }

@@ -1,15 +1,31 @@
 {
   "id": "game-3",
   "title": "情報漏洩",
+  "title_en": "Data Leak",
+  "title_zh": "信息泄露",
   "catch": "手軽に遊べる、戦略ダイスゲーム",
+  "catch_en": "A quick strategic dice game",
+  "catch_zh": "轻松上手的策略型骰子游戏",
   "players": "3-4人",
   "time": "3-15分",
   "age": "8歳+",
-  "tags": ["ボードゲーム"],
+  "tags": [
+    "ボードゲーム"
+  ],
+  "tags_en": [
+    "Board Game"
+  ],
+  "tags_zh": [
+    "桌上游戏"
+  ],
   "feature1": "特徴1（一覧に出す）",
+  "feature1_en": "Feature 1 (shown on list)",
+  "feature1_zh": "特点1（在列表显示）",
   "description": "ここにゲーム詳細説明を書きます（詳細ページ）。",
+  "description_en": "Game details will be shown here (detail page).",
+  "description_zh": "这里将显示游戏详细说明（详情页）。",
   "images": [
-    "assets/images/placeholder.svg"
+    "assets/images/game-3-package.png"
   ],
   "links": {
     "rulesPdf": "",
