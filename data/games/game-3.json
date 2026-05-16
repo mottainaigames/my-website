@@ -6,9 +6,9 @@
   "catch": "手軽に遊べる、戦略ダイスゲーム",
   "catch_en": "A quick strategic dice game",
   "catch_zh": "轻松上手的策略型骰子游戏",
-  "players": "3-4人",
+  "players": "2-4人",
   "time": "3-15分",
-  "age": "8歳+",
+  "age": "7歳+",
   "tags": [
     "ボードゲーム"
   ],
@@ -18,12 +18,12 @@
   "tags_zh": [
     "桌上游戏"
   ],
-  "feature1": "特徴1（一覧に出す）",
-  "feature1_en": "Feature 1 (shown on list)",
-  "feature1_zh": "特点1（在列表显示）",
-  "description": "ここにゲーム詳細説明を書きます（詳細ページ）。",
-  "description_en": "Game details will be shown here (detail page).",
-  "description_zh": "这里将显示游戏详细说明（详情页）。",
+  "feature1": "情報漏洩を防げ！㊙を守り抜くダイスゲーム！",
+  "feature1_en": "AVOID DATE LEAK!PROTECTING CONFIDENTAL DICE GAME",
+  "feature1_zh": "防止信息泄露！坚守公司机密信息的骰子游戏！",
+  "description": "あなたの職場は大丈夫？\n日々ニュースで報道される、あの事件たちを追体験！？\nサイコロの出目に運命を翻弄され、最後までわからない！\n全企業人のためのダイスゲーム！",
+  "description_en": "English version coming soon",
+  "description_zh": "中文版即将上线",
   "images": [
     "assets/images/game-3-package.png"
   ],
