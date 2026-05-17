@@ -20,7 +20,13 @@ body{
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 
-.container{width:100%;max-width:1200px;margin: 0 auto;padding:1px 16px 1px 26px}
+.container{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 clamp(12px, 3.5vw, 24px);
+  box-sizing:border-box;
+}
 
 
 .siteHeader{
@@ -101,13 +107,9 @@ a:hover{text-decoration:underline}
   outline:2px solid rgba(125,211,252,0.35);
 }
 
-@media(max-width:760px){
-  .header{
-    align-items:flex-start;
-  }
-  .headerRight{
-    width:100%;
-  }
+/* ハンバーガー（スマホは mobile.css で表示） */
+.menuToggle{
+  display:none;
 }
 
 .homeCarouselSection{
@@ -199,19 +201,6 @@ a:hover{text-decoration:underline}
   background:var(--accent);
   transform:scale(1.2);
 }
-@media(max-width:640px){
-  .homeCarousel{
-    padding:0 clamp(32px, 10vw, 42px);
-  }
-  .homeCarouselArrow{
-    width:36px;
-    height:36px;
-    font-size:18px;
-  }
-  #homeCarouselPrev{left:4px}
-  #homeCarouselNext{right:4px}
-}
-
 .homeMain{
   display:grid;
   gap:18px;
@@ -229,7 +218,6 @@ a:hover{text-decoration:underline}
 .section-product{
   background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   max-width:100%;
-  overflow-x:clip;
 }
 .section-news{background:rgba(125,211,252,0.08)}
 .section-events{background:rgba(167,139,250,0.08)}
@@ -257,19 +245,6 @@ a:hover{text-decoration:underline}
   color:var(--muted);
   font-size:0.92em;
   min-width:0;
-}
-@media(max-width:720px){
-  #productSection .sectionHead{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  #productSection .sectionLead{
-    width:100%;
-  }
-  #productSection.homeSection,
-  .homeMain > #productSection{
-    padding:14px;
-  }
 }
 .infoList{
   margin:0;
@@ -521,18 +496,6 @@ a:hover{text-decoration:underline}
 .aboutHeroText p{
   margin:0;
 }
-@media(max-width:760px){
-  .aboutHero{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .aboutHeroLogo{
-    height:auto;
-    width:100%;
-    max-width:200px;
-  }
-}
-
 .homeMain .card h2{margin-top:0}
 
 .muted{color:var(--muted)}
@@ -733,8 +696,5 @@ dd{margin:0}
   border:0;
   background:transparent;
 }
-@media(max-width:640px){
-  .googleFormEmbed{
-    min-height:1100px;
-  }
-}
+/* スマホ専用: assets/css/mobile.css（768px以下で自動読み込み） */
+.for-mobile{display:none !important}

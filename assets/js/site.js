@@ -78,6 +78,7 @@ window.MG = (() => {
       "fallback.gameTitle": "ゲーム",
       "home.gameCoverAlt": "{title}（ゲーム画像）",
       "a11y.nav": "ページ内ナビゲーション",
+      "a11y.menuToggle": "メニューを開く",
       "a11y.langTabs": "言語切替",
       "a11y.sectionProduct": "商品紹介とサークル紹介",
       "a11y.carousel": "作品カルーセル",
@@ -169,6 +170,7 @@ window.MG = (() => {
       "fallback.gameTitle": "Game",
       "home.gameCoverAlt": "{title} (game image)",
       "a11y.nav": "Site navigation",
+      "a11y.menuToggle": "Open menu",
       "a11y.langTabs": "Language",
       "a11y.sectionProduct": "Games and about us",
       "a11y.carousel": "Games carousel",
@@ -260,6 +262,7 @@ window.MG = (() => {
       "fallback.gameTitle": "游戏",
       "home.gameCoverAlt": "{title}（游戏图片）",
       "a11y.nav": "站内导航",
+      "a11y.menuToggle": "打开菜单",
       "a11y.langTabs": "语言切换",
       "a11y.sectionProduct": "作品与关于我们",
       "a11y.carousel": "作品轮播",
@@ -530,9 +533,38 @@ async function loadAllGames(){
     });
   }
 
+  let mobileNavInited = false;
+  function initMobileNav(){
+    if(mobileNavInited) return;
+    const toggle = document.getElementById("menuToggle");
+    const panel = document.getElementById("headerPanel");
+    if(!toggle || !panel) return;
+    mobileNavInited = true;
+
+    function setOpen(open){
+      panel.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("menu-open", open);
+    }
+
+    toggle.addEventListener("click", () => {
+      setOpen(!panel.classList.contains("is-open"));
+    });
+    panel.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => setOpen(false));
+    });
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") setOpen(false);
+    });
+    window.matchMedia("(min-width: 769px)").addEventListener("change", (e) => {
+      if(e.matches) setOpen(false);
+    });
+  }
+
   function applyCommonHeaderState(lang){
     document.documentElement.setAttribute("lang", lang);
     const dict = HOME_I18N[lang] || HOME_I18N.ja;
+    initMobileNav();
 
     const current = new URL(location.href);
     const path = current.pathname.split("/").pop() || "index.html";
@@ -718,11 +750,15 @@ async function loadAllGames(){
       const perView = visibleCount();
       const viewportWidth = viewport.getBoundingClientRect().width;
       if(viewportWidth < 48) return;
-      const maxItemWidth = { 1: 220, 2: 200, 3: 240 }[perView] || 240;
-      const itemWidth = Math.min(
-        (viewportWidth - gap * (perView - 1)) / perView,
-        maxItemWidth
-      );
+      let itemWidth = (viewportWidth - gap * (perView - 1)) / perView;
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      if(isMobile){
+        const mobileCap = perView === 1 ? viewportWidth : viewportWidth / perView;
+        itemWidth = Math.min(itemWidth, mobileCap);
+      }else{
+        const maxItemWidth = { 1: 220, 2: 200, 3: 240 }[perView] || 240;
+        itemWidth = Math.min(itemWidth, maxItemWidth);
+      }
       track.querySelectorAll(".homeCarouselItem").forEach(item => {
         item.style.width = `${itemWidth}px`;
         item.style.flexBasis = `${itemWidth}px`;
