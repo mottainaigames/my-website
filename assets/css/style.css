@@ -115,10 +115,13 @@ a:hover{text-decoration:underline}
 }
 .homeCarousel{
   position:relative;
-  padding: 0 48px;
+  padding:0 48px;
+  max-width:840px;
+  margin:0 auto;
 }
 .homeCarouselViewport{
   width:100%;
+  max-width:100%;
   overflow:hidden;
 }
 .homeCarouselTrack{
@@ -126,8 +129,9 @@ a:hover{text-decoration:underline}
   gap:12px;
   will-change:transform;
 }
+/* 幅は JS がビューポート基準で設定（% はトラック全体を参照して崩れるため） */
 .homeCarouselItem{
-  flex:0 0 calc((100% - 24px) / 3);
+  flex:0 0 auto;
   min-width:0;
 }
 .homeCarouselLink{
@@ -142,6 +146,7 @@ a:hover{text-decoration:underline}
   display:block;
   width:100%;
   aspect-ratio:3/4;
+  max-height:min(280px, 42vh);
   object-fit:contain;
   background:#0a0b10;
 }
@@ -194,14 +199,17 @@ a:hover{text-decoration:underline}
   background:var(--accent);
   transform:scale(1.2);
 }
-@media(max-width:900px){
-  .homeCarouselItem{flex-basis:calc((100% - 12px) / 2)}
-}
 @media(max-width:640px){
   .homeCarousel{
-    padding:0 42px;
+    padding:0 clamp(32px, 10vw, 42px);
   }
-  .homeCarouselItem{flex-basis:100%}
+  .homeCarouselArrow{
+    width:36px;
+    height:36px;
+    font-size:18px;
+  }
+  #homeCarouselPrev{left:4px}
+  #homeCarouselNext{right:4px}
 }
 
 .homeMain{
@@ -218,7 +226,11 @@ a:hover{text-decoration:underline}
   border-radius:16px;
   box-shadow:0 8px 26px rgba(0,0,0,0.22);
 }
-.section-product{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))}
+.section-product{
+  background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  max-width:100%;
+  overflow-x:clip;
+}
 .section-news{background:rgba(125,211,252,0.08)}
 .section-events{background:rgba(167,139,250,0.08)}
 .section-links{background:rgba(45,212,191,0.08)}
@@ -244,6 +256,20 @@ a:hover{text-decoration:underline}
   margin:0;
   color:var(--muted);
   font-size:0.92em;
+  min-width:0;
+}
+@media(max-width:720px){
+  #productSection .sectionHead{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  #productSection .sectionLead{
+    width:100%;
+  }
+  #productSection.homeSection,
+  .homeMain > #productSection{
+    padding:14px;
+  }
 }
 .infoList{
   margin:0;
@@ -474,8 +500,8 @@ a:hover{text-decoration:underline}
 .aboutHeroLogo{
   display:block;
   width:auto;
-  height:108px;
-  max-width:100%;
+  height:clamp(64px, 12vw, 96px);
+  max-width:min(240px, 100%);
   border:none;
   background:transparent;
   object-fit:contain;
@@ -483,7 +509,7 @@ a:hover{text-decoration:underline}
 }
 .aboutHeroText{
   flex:1;
-  min-width:240px;
+  min-width:0;
 }
 .aboutHeroText h2{
   margin:0 0 8px;
@@ -503,7 +529,7 @@ a:hover{text-decoration:underline}
   .aboutHeroLogo{
     height:auto;
     width:100%;
-    max-width:280px;
+    max-width:200px;
   }
 }
 

@@ -712,12 +712,30 @@ async function loadAllGames(){
     }
 
     function measure(){
-      const first = track.querySelector(".homeCarouselItem");
-      if(!first) return;
-      stepWidth = first.getBoundingClientRect().width + 12;
+      const viewport = document.getElementById("homeCarouselViewport");
+      if(!viewport || !track.querySelector(".homeCarouselItem")) return;
+      const gap = 12;
+      const perView = visibleCount();
+      const viewportWidth = viewport.getBoundingClientRect().width;
+      if(viewportWidth < 48) return;
+      const maxItemWidth = { 1: 220, 2: 200, 3: 240 }[perView] || 240;
+      const itemWidth = Math.min(
+        (viewportWidth - gap * (perView - 1)) / perView,
+        maxItemWidth
+      );
+      track.querySelectorAll(".homeCarouselItem").forEach(item => {
+        item.style.width = `${itemWidth}px`;
+        item.style.flexBasis = `${itemWidth}px`;
+      });
+      stepWidth = itemWidth + gap;
       cycleWidth = stepWidth * games.length;
       while(offset >= cycleWidth) offset -= cycleWidth;
       while(offset < 0) offset += cycleWidth;
+    }
+
+    function layoutCarousel(){
+      measure();
+      renderOffset();
     }
 
     function visibleCount(){
@@ -783,8 +801,8 @@ async function loadAllGames(){
       dotButtons.push(btn);
       dots.appendChild(btn);
     });
-    measure();
-    renderOffset();
+    layoutCarousel();
+    requestAnimationFrame(() => layoutCarousel());
 
     prev.addEventListener("click", () => moveBy(-1));
     next.addEventListener("click", () => moveBy(1));
@@ -792,10 +810,13 @@ async function loadAllGames(){
     frame.addEventListener("mouseleave", () => { running = true; });
     frame.addEventListener("focusin", () => { running = false; });
     frame.addEventListener("focusout", () => { running = true; });
-    window.addEventListener("resize", () => {
-      measure();
-      renderOffset();
-    });
+    window.addEventListener("resize", layoutCarousel);
+
+    const viewportEl = document.getElementById("homeCarouselViewport");
+    if(viewportEl && typeof ResizeObserver !== "undefined"){
+      const ro = new ResizeObserver(() => layoutCarousel());
+      ro.observe(viewportEl);
+    }
 
     requestAnimationFrame(tick);
   }
