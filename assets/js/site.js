@@ -683,7 +683,8 @@ async function loadAllGames(){
         : el("span", { class:"newsArchiveLink" }, [it.title]);
       target.appendChild(el("li", { class:"newsArchiveItem", id:`archive-${it.id}` }, [
         el("span", { class:"newsArchiveDate" }, [it.date || "----/--/--"]),
-        titleNode
+        titleNode,
+        nonEmpty(it.text) ? el("p", { class:"newsText muted" }, [it.text]) : el("span", {})
       ]));
     });
   }

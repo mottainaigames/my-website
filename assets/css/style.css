@@ -392,6 +392,7 @@ a:hover{text-decoration:underline}
 .newsText{
   margin:4px 0 0;
   font-size:0.9em;
+  white-space:pre-line;
 }
 .newsList{
   list-style:none;
