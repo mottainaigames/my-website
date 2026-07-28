@@ -1,0 +1,44 @@
+{
+    "items": [
+        {
+            "id": "n000",
+            "date": "2022-01-01",
+            "title_ja": "サンプルテキスト",
+            "title_en": "sample text",
+            "title_zh": "示例文本",
+            "published": false
+        },
+        {
+            "id": "n001",
+            "date": "2026-03-06",
+            "title_ja": "ゲームマーケット2026春に当選しました",
+            "title_en": "We have been selected for Game Market 2026 Spring",
+            "title_zh": "我们已入选 Game Market 2026 春季展",
+            "published": true
+        },
+        {
+            "id": "n002",
+            "date": "2026-05-16",
+            "title_ja": "「定時退社」累計販売1万部突破のお知らせ",
+            "title_en": "\"Leave on Time\" surpasses 10,000 units sold",
+            "title_zh": "「准时下班」累计销量突破1万部",
+            "published": true
+        },
+        {
+            "id": "n003",
+            "date": "2026-05-23",
+            "title_ja": "『定時退社』第4版第1刷の一部カードにおける印刷上の不具合について",
+            "title_en": "",
+            "title_zh": "",
+            "published": true
+        },
+        {
+            "id": "n004",
+            "date": "2026-06-14",
+            "title_ja": "『情報漏洩』第1版エラッタ",
+            "title_en": "",
+            "title_zh": "",
+            "published": true
+        }
+    ]
+}

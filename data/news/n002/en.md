@@ -1,0 +1,1 @@
+Thank you to everyone who purchased and supported our board game "Leave on Time" — cumulative sales have exceeded 10,000 units.

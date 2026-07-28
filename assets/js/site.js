@@ -1,6 +1,7 @@
 window.MG = (() => {
   const GAME_INDEX_URL = "data/games/index.json";
-  const ANNOUNCE_URL = "data/announcements.json";
+  const ANNOUNCE_URL = "data/news/index.json";
+  // const ANNOUNCE_URL = "data/announcements.json";
   const EVENTS_URL = "data/events.json";
   const PLACEHOLDER = "assets/images/placeholder.svg";
   /** Googleフォーム「送信」→「<>」埋め込みの iframe用 src（…/viewform?embedded=true までのURL）。空のときは案内文のみ表示 */
@@ -285,7 +286,7 @@ window.MG = (() => {
     }
   };
 
-  function t(lang, key, vars = {}){
+  function t(lang, key, vars = {}) {
     const dict = HOME_I18N[lang] || HOME_I18N.ja;
     let text = dict[key] || HOME_I18N.ja[key] || key;
     Object.entries(vars).forEach(([k, v]) => {
@@ -365,60 +366,60 @@ window.MG = (() => {
     }
   };
 
-  function localizeText(value, lang){
-    if(!nonEmpty(value) || lang === "ja") return value;
+  function localizeText(value, lang) {
+    if (!nonEmpty(value) || lang === "ja") return value;
     return TEXT_MAP[lang]?.[value] || value;
   }
 
-  function pickLocalizedField(source, key, lang){
-    if(!source) return "";
+  function pickLocalizedField(source, key, lang) {
+    if (!source) return "";
     const direct = source[`${key}_${lang}`];
-    if(nonEmpty(direct)) return direct.trim();
+    if (nonEmpty(direct)) return direct.trim();
     const i18nA = source[`${key}_i18n`];
-    if(i18nA && nonEmpty(i18nA[lang])) return i18nA[lang].trim();
+    if (i18nA && nonEmpty(i18nA[lang])) return i18nA[lang].trim();
     const i18nB = source[`${key}I18n`];
-    if(i18nB && nonEmpty(i18nB[lang])) return i18nB[lang].trim();
+    if (i18nB && nonEmpty(i18nB[lang])) return i18nB[lang].trim();
     const base = source[key];
     return nonEmpty(base) ? base.trim() : "";
   }
 
-  function localizePlayers(value, lang){
-    if(!nonEmpty(value)) return value;
-    if(lang === "en") return value.replace(/人/g, " players");
+  function localizePlayers(value, lang) {
+    if (!nonEmpty(value)) return value;
+    if (lang === "en") return value.replace(/人/g, " players");
     return value;
   }
 
-  function localizeTime(value, lang){
-    if(!nonEmpty(value)) return value;
-    if(lang === "en") return value.replace(/分/g, " min");
-    if(lang === "zh") return value.replace(/分/g, "分钟");
+  function localizeTime(value, lang) {
+    if (!nonEmpty(value)) return value;
+    if (lang === "en") return value.replace(/分/g, " min");
+    if (lang === "zh") return value.replace(/分/g, "分钟");
     return value;
   }
 
-  function localizeAge(value, lang){
-    if(!nonEmpty(value)) return value;
-    if(lang === "en") return value.replace(/歳\+/g, "+");
-    if(lang === "zh") return value.replace(/歳\+/g, "岁+");
+  function localizeAge(value, lang) {
+    if (!nonEmpty(value)) return value;
+    if (lang === "en") return value.replace(/歳\+/g, "+");
+    if (lang === "zh") return value.replace(/歳\+/g, "岁+");
     return value;
   }
 
   /** ゲームJSONの channels（販売チャネル名のみ・リンクは links に記載） */
-  function resolvedChannelLabels(game, lang){
+  function resolvedChannelLabels(game, lang) {
     const arr = Array.isArray(game?.channels) ? game.channels : [];
     return arr.map(ch => {
       let label = "";
-      if(lang === "ja"){
+      if (lang === "ja") {
         label = nonEmpty(ch?.label) ? ch.label.trim() : "";
-      }else{
+      } else {
         label = pickLocalizedField(ch, "label", lang);
-        if(!nonEmpty(label) && nonEmpty(ch?.label)) label = ch.label.trim();
+        if (!nonEmpty(label) && nonEmpty(ch?.label)) label = ch.label.trim();
       }
       return label;
     }).filter(nonEmpty);
   }
 
-  function localizeGame(game, lang){
-    if(!game || lang === "ja") return game;
+  function localizeGame(game, lang) {
+    if (!game || lang === "ja") return game;
     const title = pickLocalizedField(game, "title", lang);
     const catchCopy = pickLocalizedField(game, "catch", lang);
     const feature1 = pickLocalizedField(game, "feature1", lang);
@@ -439,77 +440,81 @@ window.MG = (() => {
     };
   }
 
-  async function loadJSON(url){
+  async function loadJSON(url) {
     const res = await fetch(url, { cache: "no-store" });
-    if(!res.ok) throw new Error(`Failed: ${url}`);
+    if (!res.ok) throw new Error(`Failed: ${url}`);
     return await res.json();
   }
 
-  async function loadGameIds(){
+  async function loadGameIds() {
     const idx = await loadJSON(GAME_INDEX_URL);
     return Array.isArray(idx.games) ? idx.games : [];
   }
 
-  async function loadGame(id){
+  async function loadGame(id) {
     return await loadJSON(`data/games/${id}.json`);
   }
 
-async function loadAllGames(){
-  const ids = await loadGameIds();
-  const results = await Promise.allSettled(ids.map(loadGame));
-  return results
-    .filter(r => r.status === "fulfilled")
-    .map(r => r.value);
-}
+  async function loadAllGames() {
+    const ids = await loadGameIds();
+    const results = await Promise.allSettled(ids.map(loadGame));
+    return results
+      .filter(r => r.status === "fulfilled")
+      .map(r => r.value);
+  }
 
-  function el(tag, attrs = {}, children = []){
+  function el(tag, attrs = {}, children = []) {
     const n = document.createElement(tag);
-    for(const [k,v] of Object.entries(attrs)){
-      if(k === "class") n.className = v;
-      else if(k.startsWith("on") && typeof v === "function") n.addEventListener(k.slice(2), v);
-      else if(v !== null && v !== undefined) n.setAttribute(k, v);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") n.className = v;
+      else if (k.startsWith("on") && typeof v === "function") n.addEventListener(k.slice(2), v);
+      else if (v !== null && v !== undefined) n.setAttribute(k, v);
     }
-    for(const c of children){
+    for (const c of children) {
       n.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
     }
     return n;
   }
 
-  function nonEmpty(v){
+  function nonEmpty(v) {
     return typeof v === "string" && v.trim().length > 0;
   }
 
-  function getLang(){
+  /**
+   * 使用言語を取得
+   * @returns 言語
+   */
+  function getLang() {
     const params = new URLSearchParams(location.search);
     const requested = (params.get("lang") || "").toLowerCase();
-    if(SUPPORTED_LANGS.includes(requested)) return requested;
-    if(requested.startsWith("zh")) return "zh";
-    if(requested.startsWith("en")) return "en";
-    if(requested.startsWith("ja")) return "ja";
+    if (SUPPORTED_LANGS.includes(requested)) return requested;
+    if (requested.startsWith("zh")) return "zh";
+    if (requested.startsWith("en")) return "en";
+    if (requested.startsWith("ja")) return "ja";
     return "ja";
   }
 
-  function setParamInUrl(base, key, value){
+  function setParamInUrl(base, key, value) {
     const url = new URL(base, location.href);
     url.searchParams.set(key, value);
-    if(url.pathname.endsWith("index.html")){
+    if (url.pathname.endsWith("index.html")) {
       url.hash = "";
     }
     return `${url.pathname}${url.search}${url.hash}`;
   }
 
-  function applyHomeI18n(lang){
+  function applyHomeI18n(lang) {
     const dict = HOME_I18N[lang] || HOME_I18N.ja;
 
     document.documentElement.setAttribute("lang", lang);
 
     document.querySelectorAll("[data-i18n]").forEach(node => {
       const key = node.getAttribute("data-i18n");
-      if(dict[key]) node.textContent = dict[key];
+      if (dict[key]) node.textContent = dict[key];
     });
     document.querySelectorAll("[data-i18n-html]").forEach(node => {
       const key = node.getAttribute("data-i18n-html");
-      if(dict[key]) node.innerHTML = dict[key];
+      if (dict[key]) node.innerHTML = dict[key];
     });
 
     document.querySelectorAll(".langTabs a[data-lang]").forEach(a => {
@@ -517,31 +522,31 @@ async function loadAllGames(){
       const url = new URL(location.href);
       url.searchParams.set("lang", tabLang);
       a.setAttribute("href", `${url.pathname}${url.search}${url.hash}`);
-      if(tabLang === lang) a.setAttribute("aria-current", "page");
+      if (tabLang === lang) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
     });
 
     const keepLangLinks = document.querySelectorAll('a[href="index.html"], a[href="games.html"], a[href="news.html"], a[href="contact.html"]');
     keepLangLinks.forEach(a => {
       const href = a.getAttribute("href");
-      if(!href) return;
-      if(href.startsWith("#")){
+      if (!href) return;
+      if (href.startsWith("#")) {
         a.setAttribute("href", `index.html?lang=${lang}${href}`);
-      }else{
+      } else {
         a.setAttribute("href", setParamInUrl(href, "lang", lang));
       }
     });
   }
 
   let mobileNavInited = false;
-  function initMobileNav(){
-    if(mobileNavInited) return;
+  function initMobileNav() {
+    if (mobileNavInited) return;
     const toggle = document.getElementById("menuToggle");
     const panel = document.getElementById("headerPanel");
-    if(!toggle || !panel) return;
+    if (!toggle || !panel) return;
     mobileNavInited = true;
 
-    function setOpen(open){
+    function setOpen(open) {
       panel.classList.toggle("is-open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       document.body.classList.toggle("menu-open", open);
@@ -554,14 +559,14 @@ async function loadAllGames(){
       a.addEventListener("click", () => setOpen(false));
     });
     document.addEventListener("keydown", (e) => {
-      if(e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") setOpen(false);
     });
     window.matchMedia("(min-width: 769px)").addEventListener("change", (e) => {
-      if(e.matches) setOpen(false);
+      if (e.matches) setOpen(false);
     });
   }
 
-  function applyCommonHeaderState(lang){
+  function applyCommonHeaderState(lang) {
     document.documentElement.setAttribute("lang", lang);
     const dict = HOME_I18N[lang] || HOME_I18N.ja;
     initMobileNav();
@@ -571,76 +576,82 @@ async function loadAllGames(){
     const id = current.searchParams.get("id");
 
     const brandLink = document.querySelector(".brandLink");
-    if(brandLink){
+    if (brandLink) {
       brandLink.setAttribute("href", `index.html?lang=${lang}`);
     }
 
     document.querySelectorAll("[data-i18n]").forEach(node => {
       const key = node.getAttribute("data-i18n");
-      if(dict[key]) node.textContent = dict[key];
+      if (dict[key]) node.textContent = dict[key];
     });
     document.querySelectorAll("[data-i18n-placeholder]").forEach(node => {
       const key = node.getAttribute("data-i18n-placeholder");
-      if(dict[key]) node.setAttribute("placeholder", dict[key]);
+      if (dict[key]) node.setAttribute("placeholder", dict[key]);
     });
     document.querySelectorAll("[data-i18n-aria-label]").forEach(node => {
       const key = node.getAttribute("data-i18n-aria-label");
-      if(dict[key]) node.setAttribute("aria-label", dict[key]);
+      if (dict[key]) node.setAttribute("aria-label", dict[key]);
     });
     document.querySelectorAll("[data-i18n-alt]").forEach(node => {
       const key = node.getAttribute("data-i18n-alt");
-      if(dict[key]) node.setAttribute("alt", dict[key]);
+      if (dict[key]) node.setAttribute("alt", dict[key]);
     });
     document.querySelectorAll("[data-i18n-title]").forEach(node => {
       const key = node.getAttribute("data-i18n-title");
-      if(dict[key]) node.setAttribute("title", dict[key]);
+      if (dict[key]) node.setAttribute("title", dict[key]);
     });
 
     document.querySelectorAll(".langTabs a[data-lang]").forEach(a => {
       const tabLang = a.getAttribute("data-lang");
       const url = new URL(current.href);
       url.searchParams.set("lang", tabLang);
-      if(path === "game.html" && id){
+      if (path === "game.html" && id) {
         url.searchParams.set("id", id);
       }
       a.setAttribute("href", `${url.pathname}${url.search}${url.hash}`);
-      if(tabLang === lang) a.setAttribute("aria-current", "page");
+      if (tabLang === lang) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
     });
 
     document.querySelectorAll('a[data-keep-lang="true"]').forEach(a => {
       const href = a.getAttribute("href");
-      if(!href) return;
+      if (!href) return;
       const url = new URL(href, location.href);
       url.searchParams.set("lang", lang);
-      if(url.pathname.endsWith("game.html") && id){
+      if (url.pathname.endsWith("game.html") && id) {
         url.searchParams.set("id", id);
       }
       a.setAttribute("href", `${url.pathname}${url.search}${url.hash}`);
     });
   }
 
-  function normalizeAnnouncements(payload, lang){
+  /**
+   * ニュース記事のjsonファイルを読み込み
+   * id, date, titleを抽出して返す
+   * 
+   * @param {*} payload 
+   * @param {*} lang 
+   * @returns 
+   */
+  function normalizeAnnouncements(payload, lang) {
     const items = Array.isArray(payload?.items) ? payload.items : [];
     return items
+      .filter(it => it.published !== false)
       .map((it, idx) => {
-        const titleRaw = pickLocalizedField(it, "title", lang);
-        const textRaw = pickLocalizedField(it, "text", lang);
+        const title = pickLocalizedField(it, "title_" + lang, lang);
         return {
           id: nonEmpty(it?.id) ? it.id.trim() : `news-${idx + 1}`,
           date: nonEmpty(it?.date) ? it.date.trim() : "",
-          title: localizeText(nonEmpty(titleRaw) ? titleRaw : (nonEmpty(textRaw) ? textRaw : t(lang, "news.fallbackTitle")), lang),
-          text: localizeText(textRaw, lang),
-          detailPath: nonEmpty(it?.detailPath) ? it.detailPath.trim() : ""
+          title: localizeText(nonEmpty(title) ? title : (nonEmpty(title) ? title : t(lang, "news.fallbackTitle")), lang)
         };
       })
       .sort((a, b) => (a.date < b.date ? 1 : -1));
   }
 
-  function renderNewsSimpleList(target, items, lang){
-    if(!target) return;
+  function renderNewsSimpleList(target, items, lang) {
+    if (!target) return;
     target.innerHTML = "";
-    if(items.length === 0){
+    if (items.length === 0) {
       target.appendChild(el("li", {}, [t(lang, "news.empty")]));
       return;
     }
@@ -651,69 +662,56 @@ async function loadAllGames(){
     });
   }
 
-  function renderNewsCards(target, items, lang){
-    if(!target) return;
+  /**
+   *  ニュースカードを描画
+   * 
+   * @param {*} target 
+   * @param {*} items 
+   * @param {*} lang 
+   * @returns 
+   */
+  function renderNewsCards(target, items, lang) {
+    if (!target) return;
     target.innerHTML = "";
-    if(items.length === 0){
-      target.appendChild(el("li", { class:"newsCard" }, [t(lang, "news.empty")]));
+    if (items.length === 0) {
+      target.appendChild(el("li", { class: "newsCard" }, [t(lang, "news.empty")]));
       return;
     }
     items.forEach(it => {
-      const titleNode = it.detailPath
-        ? el("a", { class:"newsTitle", href:it.detailPath }, [it.title])
-        : el("span", { class:"newsTitle" }, [it.title]);
-      target.appendChild(el("li", { class:"newsCard", id:it.id }, [
-        el("div", { class:"newsDate" }, [it.date || "----/--/--"]),
+      const titleNode = el("a", { class: "newsTitle", href: `news-detail.html?id=${it.id}&lang=${lang}` }, [it.title]);
+      target.appendChild(el("li", { class: "newsCard", id: it.id }, [
+        el("div", { class: "newsDate" }, [it.date || "----/--/--"]),
         titleNode,
-        nonEmpty(it.text) ? el("p", { class:"newsText muted" }, [it.text]) : el("span", {})
+        nonEmpty(it.text) ? el("p", { class: "newsText muted" }, [it.text]) : el("span", {})
       ]));
     });
   }
 
-  function renderNewsArchive(target, items, lang){
-    if(!target) return;
-    target.innerHTML = "";
-    if(items.length === 0){
-      target.appendChild(el("li", { class:"newsArchiveItem muted" }, [t(lang, "news.empty")]));
-      return;
-    }
-    items.forEach(it => {
-      const titleNode = it.detailPath
-        ? el("a", { class:"newsArchiveLink", href:it.detailPath }, [it.title])
-        : el("span", { class:"newsArchiveLink" }, [it.title]);
-      target.appendChild(el("li", { class:"newsArchiveItem", id:`archive-${it.id}` }, [
-        el("span", { class:"newsArchiveDate" }, [it.date || "----/--/--"]),
-        titleNode,
-        nonEmpty(it.text) ? el("p", { class:"newsText muted" }, [it.text]) : el("span", {})
-      ]));
-    });
-  }
-
-  async function renderHomeCarousel(lang){
+  async function renderHomeCarousel(lang) {
     const section = document.getElementById("homeCarouselSection");
     const track = document.getElementById("homeCarouselTrack");
     const dots = document.getElementById("homeCarouselDots");
     const prev = document.getElementById("homeCarouselPrev");
     const next = document.getElementById("homeCarouselNext");
     const frame = document.getElementById("homeCarousel");
-    if(!section || !track || !dots || !prev || !next || !frame) return;
+    if (!section || !track || !dots || !prev || !next || !frame) return;
 
     let games = [];
-    try{
+    try {
       games = (await loadAllGames())
         .filter(g => g && g.id)
         .map(g => localizeGame(g, lang));
-    }catch(_){
+    } catch (_) {
       section.style.display = "none";
       return;
     }
 
-    if(games.length === 0){
+    if (games.length === 0) {
       section.style.display = "none";
       return;
     }
 
-    function gameHref(id){
+    function gameHref(id) {
       const url = new URL("game.html", location.href);
       url.searchParams.set("id", id);
       url.searchParams.set("lang", lang);
@@ -728,15 +726,15 @@ async function loadAllGames(){
     const speedPxPerSec = 36;
     const dotButtons = [];
 
-    function buildTrack(){
+    function buildTrack() {
       track.innerHTML = "";
       const repeatCount = 3;
-      for(let i = 0; i < repeatCount; i++){
+      for (let i = 0; i < repeatCount; i++) {
         games.forEach(g => {
-          const item = el("div", { class:"homeCarouselItem" }, [
-            el("a", { class:"homeCarouselLink", href:gameHref(g.id) }, [
-              el("img", { class:"homeCarouselImage", src:firstImage(g), alt:t(lang, "home.gameCoverAlt", { title: g.title || t(lang, "fallback.gameTitle") }) }),
-              el("span", { class:"homeCarouselTitle" }, [g.title || "Untitled"])
+          const item = el("div", { class: "homeCarouselItem" }, [
+            el("a", { class: "homeCarouselLink", href: gameHref(g.id) }, [
+              el("img", { class: "homeCarouselImage", src: firstImage(g), alt: t(lang, "home.gameCoverAlt", { title: g.title || t(lang, "fallback.gameTitle") }) }),
+              el("span", { class: "homeCarouselTitle" }, [g.title || "Untitled"])
             ])
           ]);
           track.appendChild(item);
@@ -744,19 +742,19 @@ async function loadAllGames(){
       }
     }
 
-    function measure(){
+    function measure() {
       const viewport = document.getElementById("homeCarouselViewport");
-      if(!viewport || !track.querySelector(".homeCarouselItem")) return;
+      if (!viewport || !track.querySelector(".homeCarouselItem")) return;
       const gap = 12;
       const perView = visibleCount();
       const viewportWidth = viewport.getBoundingClientRect().width;
-      if(viewportWidth < 48) return;
+      if (viewportWidth < 48) return;
       let itemWidth = (viewportWidth - gap * (perView - 1)) / perView;
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      if(isMobile){
+      if (isMobile) {
         const mobileCap = perView === 1 ? viewportWidth : viewportWidth / perView;
         itemWidth = Math.min(itemWidth, mobileCap);
-      }else{
+      } else {
         const maxItemWidth = { 1: 220, 2: 200, 3: 240 }[perView] || 240;
         itemWidth = Math.min(itemWidth, maxItemWidth);
       }
@@ -766,59 +764,59 @@ async function loadAllGames(){
       });
       stepWidth = itemWidth + gap;
       cycleWidth = stepWidth * games.length;
-      while(offset >= cycleWidth) offset -= cycleWidth;
-      while(offset < 0) offset += cycleWidth;
+      while (offset >= cycleWidth) offset -= cycleWidth;
+      while (offset < 0) offset += cycleWidth;
     }
 
-    function layoutCarousel(){
+    function layoutCarousel() {
       measure();
       renderOffset();
     }
 
-    function visibleCount(){
-      if(window.matchMedia("(max-width:640px)").matches) return 1;
-      if(window.matchMedia("(max-width:900px)").matches) return 2;
+    function visibleCount() {
+      if (window.matchMedia("(max-width:640px)").matches) return 1;
+      if (window.matchMedia("(max-width:900px)").matches) return 2;
       return 3;
     }
 
-    function activeIndex(){
-      if(stepWidth <= 0 || games.length === 0) return 0;
+    function activeIndex() {
+      if (stepWidth <= 0 || games.length === 0) return 0;
       const center = (offset / stepWidth) + (visibleCount() - 1) / 2;
       return ((Math.round(center) % games.length) + games.length) % games.length;
     }
 
-    function updateDots(){
+    function updateDots() {
       const active = activeIndex();
       dotButtons.forEach((btn, i) => {
-        if(i === active) btn.classList.add("is-active");
+        if (i === active) btn.classList.add("is-active");
         else btn.classList.remove("is-active");
       });
     }
 
-    function renderOffset(){
+    function renderOffset() {
       track.style.transform = `translateX(${-offset}px)`;
       prev.disabled = games.length <= 1;
       next.disabled = games.length <= 1;
       updateDots();
     }
 
-    function tick(ts){
-      if(!lastTs) lastTs = ts;
+    function tick(ts) {
+      if (!lastTs) lastTs = ts;
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
-      if(running && cycleWidth > 0){
+      if (running && cycleWidth > 0) {
         offset += speedPxPerSec * dt;
-        if(offset >= cycleWidth) offset -= cycleWidth;
+        if (offset >= cycleWidth) offset -= cycleWidth;
         renderOffset();
       }
       requestAnimationFrame(tick);
     }
 
-    function moveBy(step){
-      if(stepWidth <= 0) return;
+    function moveBy(step) {
+      if (stepWidth <= 0) return;
       offset += step * stepWidth;
-      while(offset >= cycleWidth) offset -= cycleWidth;
-      while(offset < 0) offset += cycleWidth;
+      while (offset >= cycleWidth) offset -= cycleWidth;
+      while (offset < 0) offset += cycleWidth;
       renderOffset();
     }
 
@@ -826,9 +824,9 @@ async function loadAllGames(){
     dots.innerHTML = "";
     games.forEach((g, i) => {
       const btn = el("button", {
-        class:"homeCarouselDot",
-        type:"button",
-        "aria-label":t(lang, "carousel.itemLabel", { index: i + 1, title: g.title || "Untitled" }),
+        class: "homeCarouselDot",
+        type: "button",
+        "aria-label": t(lang, "carousel.itemLabel", { index: i + 1, title: g.title || "Untitled" }),
         onclick: () => {
           const target = i - (visibleCount() - 1) / 2;
           offset = ((target * stepWidth) % cycleWidth + cycleWidth) % cycleWidth;
@@ -850,7 +848,7 @@ async function loadAllGames(){
     window.addEventListener("resize", layoutCarousel);
 
     const viewportEl = document.getElementById("homeCarouselViewport");
-    if(viewportEl && typeof ResizeObserver !== "undefined"){
+    if (viewportEl && typeof ResizeObserver !== "undefined") {
       const ro = new ResizeObserver(() => layoutCarousel());
       ro.observe(viewportEl);
     }
@@ -858,15 +856,15 @@ async function loadAllGames(){
     requestAnimationFrame(tick);
   }
 
-  function renderEventList(target, items, options = {}){
-    if(!target) return;
+  function renderEventList(target, items, options = {}) {
+    if (!target) return;
     const next = target.nextElementSibling;
-    if(next && next.classList && next.classList.contains("eventsToggle")) next.remove();
+    if (next && next.classList && next.classList.contains("eventsToggle")) next.remove();
     target.innerHTML = "";
     const initialVisible = Math.max(0, options.initialVisible ?? 0);
     const lang = options.lang || "ja";
-    if(!Array.isArray(items) || items.length === 0){
-      target.appendChild(el("li", { class:"eventsItem" }, [t(lang, "events.empty")]));
+    if (!Array.isArray(items) || items.length === 0) {
+      target.appendChild(el("li", { class: "eventsItem" }, [t(lang, "events.empty")]));
       return;
     }
 
@@ -879,21 +877,21 @@ async function loadAllGames(){
       const eventName = pickLocalizedField(item, "name", lang);
       const location = pickLocalizedField(item, "location", lang);
       const statusClass = statusJa === "参加" ? "status-join" : "status-exhibit";
-      const li = el("li", { class:"eventsItem" }, [
-        el("div", { class:"eventsMain" }, [
-          el("span", { class:"eventName" }, [localizeText(eventName, lang) || t(lang, "events.unnamed")]),
-          el("div", { class:"eventMeta" }, [
-            el("span", { class:`eventBadge ${statusClass}` }, [status]),
-            location ? el("span", { class:"eventBadge" }, [localizeText(location, lang)]) : null
+      const li = el("li", { class: "eventsItem" }, [
+        el("div", { class: "eventsMain" }, [
+          el("span", { class: "eventName" }, [localizeText(eventName, lang) || t(lang, "events.unnamed")]),
+          el("div", { class: "eventMeta" }, [
+            el("span", { class: `eventBadge ${statusClass}` }, [status]),
+            location ? el("span", { class: "eventBadge" }, [localizeText(location, lang)]) : null
           ].filter(Boolean))
         ])
       ]);
       const isInitiallyHidden = initialVisible > 0 && target.childElementCount >= visibleItems.length;
-      if(isInitiallyHidden) li.hidden = true;
+      if (isInitiallyHidden) li.hidden = true;
       target.appendChild(li);
     });
 
-    if(items.length > visibleItems.length){
+    if (items.length > visibleItems.length) {
       let expanded = false;
       target.classList.add("is-collapsed");
       const btn = el("button", {
@@ -903,235 +901,291 @@ async function loadAllGames(){
       btn.addEventListener("click", () => {
         expanded = !expanded;
         target.querySelectorAll(".eventsItem").forEach((node, idx) => {
-          if(idx >= visibleItems.length) node.hidden = !expanded;
+          if (idx >= visibleItems.length) node.hidden = !expanded;
         });
-        if(expanded){
+        if (expanded) {
           target.classList.remove("is-collapsed");
           btn.textContent = t(lang, "events.close");
-        }else{
+        } else {
           target.classList.add("is-collapsed");
           btn.textContent = t(lang, "events.more");
         }
       });
       target.insertAdjacentElement("afterend", btn);
-    }else{
+    } else {
       target.classList.remove("is-collapsed");
     }
   }
 
-  async function renderEvents(lang){
+  async function renderEvents(lang) {
     const historyList = document.getElementById("eventsHistoryList");
     const upcomingList = document.getElementById("eventsUpcomingList");
     const section = document.getElementById("eventsSection");
-    if(!historyList || !upcomingList || !section) return;
+    if (!historyList || !upcomingList || !section) return;
 
-    try{
+    try {
       const data = await loadJSON(EVENTS_URL);
       renderEventList(historyList, data.history, { initialVisible: 5, lang });
       renderEventList(upcomingList, data.upcoming, { initialVisible: 2, lang });
-    }catch(_){
+    } catch (_) {
       section.style.display = "none";
     }
   }
 
-  async function renderNewsPage(){
+  /**
+   * ニュースページ
+   */
+  async function renderNewsPage() {
     const lang = getLang();
     applyCommonHeaderState(lang);
     document.title = t(lang, "news.pageTitle");
 
     const latest = document.getElementById("latestNewsList");
-    const archive = document.getElementById("archiveNewsList");
-    if(!latest || !archive) return;
+    if (!latest) return;
 
-    try{
-      const normalized = normalizeAnnouncements(await loadJSON(ANNOUNCE_URL), lang);
-      renderNewsCards(latest, normalized.slice(0, 3), lang);
-      renderNewsArchive(archive, normalized.slice(3), lang);
-    }catch(_){
+    try {
+      const data = await loadJSON(ANNOUNCE_URL);
+      const normalized = normalizeAnnouncements(data, lang);
+      renderNewsCards(latest, normalized, lang);
+    } catch (_) {
       renderNewsCards(latest, [], lang);
-      renderNewsArchive(archive, [], lang);
     }
   }
 
-  function firstImage(game){
+  /**
+   * ニュース詳細ページ
+   */
+  async function renderNewsDetailPage() {
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    const lang = getLang();
+    const titleEl = document.getElementById('newsDetailTitle');
+    const contentEl = document.getElementById('newsDetailContent');
+    const backLink = document.getElementById('newsDetailBackLink');
+
+    if (!id || !contentEl) return;
+    if (backLink) backLink.href = `news.html?lang=${encodeURIComponent(lang)}`;
+
+    // TODO: ファイルが読み込めない場合にエラーが発生する
+    const loadMarkdown = path => fetch(path).then(res => {
+      if (!res.ok) throw new Error(path + ' が見つかりません');
+      return res.text();
+    });
+
+    marked.setOptions({
+      breaks: true
+    });
+
+    loadMarkdown(`data/news/${id}/${lang}.md`)
+      .then(text => {
+        contentEl.innerHTML = marked.parse(text);
+      })
+      .catch(() =>
+        loadMarkdown(`data/news/${id}/ja.md`)
+          .then(text => {
+            contentEl.innerHTML = marked.parse(text);
+          })
+      )
+      .catch(error => {
+        contentEl.innerHTML = '<p>お知らせを読み込めませんでした。</p>';
+        console.error(error);
+      });
+
+    if (titleEl) {
+      fetch(ANNOUNCE_URL)
+        .then(res => res.ok ? res.json() : null)
+        .then(json => {
+          const news = normalizeAnnouncements(json, lang);
+          const card = news.find(i => i.id === id);
+          if (card) {
+            titleEl.textContent = card.title;
+          }
+        })
+        .catch(() => { });
+    }
+  }
+
+  function firstImage(game) {
     return (Array.isArray(game.images) && game.images.length) ? game.images[0] : PLACEHOLDER;
   }
 
-  function badgeIf(label, value){
-    if(!nonEmpty(value)) return null;
-    return el("span", { class:"badge" }, [`${label}：${value}`]);
+  function badgeIf(label, value) {
+    if (!nonEmpty(value)) return null;
+    return el("span", { class: "badge" }, [`${label}：${value}`]);
   }
 
 
- // games.html：一覧（検索＆タグ絞り込み対応）
-async function renderGamesList(){
-  const lang = getLang();
-  applyCommonHeaderState(lang);
-  document.title = t(lang, "games.pageTitle");
+  // games.html：一覧（検索＆タグ絞り込み対応）
+  async function renderGamesList() {
+    const lang = getLang();
+    applyCommonHeaderState(lang);
+    document.title = t(lang, "games.pageTitle");
 
-  const grid = document.getElementById("gameGrid");
-  grid.innerHTML = "";
-
-  let games = [];
-  try {
-    games = (await loadAllGames()).map(g => localizeGame(g, lang));
-  } catch(e){
-    grid.appendChild(el("div", { class:"card" }, [t(lang, "games.loadError")]));
-    return;
-  }
-
-  // ---- フィルタUIを挿入----
-  const parent = grid.parentElement || grid;
-  let bar = document.getElementById("filterBar");
-  if(!bar){
-    bar = el("div", { id:"filterBar", class:"card filterBar", role:"region", "aria-label":t(lang, "games.filterAria") }, []);
-    parent.insertBefore(bar, grid);
-  }
-  bar.innerHTML = "";
-
-  const selected = new Set();
-
-  const input = el("input", {
-    id:"searchInput",
-    type:"search",
-    placeholder:t(lang, "games.searchPlaceholder")
-  });
-
-  const clearBtn = el("button", {
-    type:"button",
-    class:"btn",
-    onclick: () => { input.value = ""; selected.clear(); update(); }
-  }, [t(lang, "games.clear")]);
-
-  const tagWrap = el("div", { class:"tagWrap" }, []);
-  const allTags = [...new Set(
-    games.flatMap(g => Array.isArray(g.tags) ? g.tags : [])
-  )].filter(t => typeof t === "string" && t.trim().length > 0);
-
-  const allBtn = el("button", {
-    type:"button",
-    class:"btn tagBtn",
-    "aria-pressed":"true",
-    onclick: () => { selected.clear(); update(); }
-  }, [t(lang, "games.all")]);
-  allBtn.dataset.tag = "__all__";
-  tagWrap.appendChild(allBtn);
-
-  for(const t of allTags){
-    const btn = el("button", {
-      type:"button",
-      class:"btn tagBtn",
-      "aria-pressed":"false",
-      onclick: () => {
-        if(selected.has(t)) selected.delete(t);
-        else selected.add(t);
-        update();
-      }
-    }, [t]);
-    btn.dataset.tag = t;
-    tagWrap.appendChild(btn);
-  }
-
-  const count = el("span", { class:"muted small", id:"resultCount" }, [""]);
-
-  bar.appendChild(input);
-  bar.appendChild(clearBtn);
-  bar.appendChild(tagWrap);
-  bar.appendChild(count);
-
-  input.addEventListener("input", () => update());
-
-  // ---- 絞り込みロジック ----
-  function matchQuery(g, q){
-    if(!q) return true;
-    const s = (v)=> (typeof v === "string" ? v : "");
-    const hay = (s(g.title) + " " + s(g.catch) + " " + s(g.feature1) + " " + s(g.description)).toLowerCase();
-    return hay.includes(q);
-  }
-
-  function matchTags(g){
-    if(selected.size === 0) return true; // 何も選ばれてない＝全部表示
-    const tags = Array.isArray(g.tags) ? g.tags : [];
-    return tags.some(t => selected.has(t)); // OR条件（どれか一致）
-  }
-
-  function updateTagButtons(){
-    allBtn.setAttribute("aria-pressed", selected.size === 0 ? "true" : "false");
-    tagWrap.querySelectorAll("button[data-tag]").forEach(btn => {
-      const t = btn.dataset.tag;
-      if(t === "__all__") return;
-      btn.setAttribute("aria-pressed", selected.has(t) ? "true" : "false");
-    });
-  }
-
-  function renderCards(list){
+    const grid = document.getElementById("gameGrid");
     grid.innerHTML = "";
-    if(list.length === 0){
-      grid.appendChild(el("div", { class:"card" }, [t(lang, "games.noResults")]));
+
+    let games = [];
+    try {
+      games = (await loadAllGames()).map(g => localizeGame(g, lang));
+    } catch (e) {
+      grid.appendChild(el("div", { class: "card" }, [t(lang, "games.loadError")]));
       return;
     }
 
-    for(const g of list){
-      const tagBadges = (Array.isArray(g.tags) ? g.tags : []).slice(0, 3)
-        .map(t => el("span", { class:"badge" }, [t]));
-
-      const card = el("div", { class:"gameCard", role:"listitem" }, [
-        el("img", { class:"cover", src:firstImage(g), alt:t(lang, "home.gameCoverAlt", { title: g.title || t(lang, "fallback.gameTitle") }) }),
-        el("div", {}, [
-          el("h2", { class:"gameTitle" }, [g.title || "Untitled"]),
-          nonEmpty(g.catch) ? el("p", { class:"muted small" }, [g.catch]) : el("span", {}),
-          el("div", { class:"metaRow" }, [
-            badgeIf(t(lang, "label.players"), g.players),
-            badgeIf(t(lang, "label.time"), g.time),
-            ...tagBadges
-          ].filter(Boolean)),
-          nonEmpty(g.feature1) ? el("p", { class:"featureOne" }, [`${t(lang, "games.featurePrefix")}：${g.feature1}`]) : el("span", {})
-        ]),
-        el("a", { class:"cardBtn", href:`game.html?id=${encodeURIComponent(g.id)}&lang=${lang}` }, [t(lang, "games.detail")])
-      ]);
-
-      grid.appendChild(card);
+    // ---- フィルタUIを挿入----
+    const parent = grid.parentElement || grid;
+    let bar = document.getElementById("filterBar");
+    if (!bar) {
+      bar = el("div", { id: "filterBar", class: "card filterBar", role: "region", "aria-label": t(lang, "games.filterAria") }, []);
+      parent.insertBefore(bar, grid);
     }
+    bar.innerHTML = "";
+
+    const selected = new Set();
+
+    const input = el("input", {
+      id: "searchInput",
+      type: "search",
+      placeholder: t(lang, "games.searchPlaceholder")
+    });
+
+    const clearBtn = el("button", {
+      type: "button",
+      class: "btn",
+      onclick: () => { input.value = ""; selected.clear(); update(); }
+    }, [t(lang, "games.clear")]);
+
+    const tagWrap = el("div", { class: "tagWrap" }, []);
+    const allTags = [...new Set(
+      games.flatMap(g => Array.isArray(g.tags) ? g.tags : [])
+    )].filter(t => typeof t === "string" && t.trim().length > 0);
+
+    const allBtn = el("button", {
+      type: "button",
+      class: "btn tagBtn",
+      "aria-pressed": "true",
+      onclick: () => { selected.clear(); update(); }
+    }, [t(lang, "games.all")]);
+    allBtn.dataset.tag = "__all__";
+    tagWrap.appendChild(allBtn);
+
+    for (const t of allTags) {
+      const btn = el("button", {
+        type: "button",
+        class: "btn tagBtn",
+        "aria-pressed": "false",
+        onclick: () => {
+          if (selected.has(t)) selected.delete(t);
+          else selected.add(t);
+          update();
+        }
+      }, [t]);
+      btn.dataset.tag = t;
+      tagWrap.appendChild(btn);
+    }
+
+    const count = el("span", { class: "muted small", id: "resultCount" }, [""]);
+
+    bar.appendChild(input);
+    bar.appendChild(clearBtn);
+    bar.appendChild(tagWrap);
+    bar.appendChild(count);
+
+    input.addEventListener("input", () => update());
+
+    // ---- 絞り込みロジック ----
+    function matchQuery(g, q) {
+      if (!q) return true;
+      const s = (v) => (typeof v === "string" ? v : "");
+      const hay = (s(g.title) + " " + s(g.catch) + " " + s(g.feature1) + " " + s(g.description)).toLowerCase();
+      return hay.includes(q);
+    }
+
+    function matchTags(g) {
+      if (selected.size === 0) return true; // 何も選ばれてない＝全部表示
+      const tags = Array.isArray(g.tags) ? g.tags : [];
+      return tags.some(t => selected.has(t)); // OR条件（どれか一致）
+    }
+
+    function updateTagButtons() {
+      allBtn.setAttribute("aria-pressed", selected.size === 0 ? "true" : "false");
+      tagWrap.querySelectorAll("button[data-tag]").forEach(btn => {
+        const t = btn.dataset.tag;
+        if (t === "__all__") return;
+        btn.setAttribute("aria-pressed", selected.has(t) ? "true" : "false");
+      });
+    }
+
+    function renderCards(list) {
+      grid.innerHTML = "";
+      if (list.length === 0) {
+        grid.appendChild(el("div", { class: "card" }, [t(lang, "games.noResults")]));
+        return;
+      }
+
+      for (const g of list) {
+        const tagBadges = (Array.isArray(g.tags) ? g.tags : []).slice(0, 3)
+          .map(t => el("span", { class: "badge" }, [t]));
+
+        const card = el("div", { class: "gameCard", role: "listitem" }, [
+          el("img", { class: "cover", src: firstImage(g), alt: t(lang, "home.gameCoverAlt", { title: g.title || t(lang, "fallback.gameTitle") }) }),
+          el("div", {}, [
+            el("h2", { class: "gameTitle" }, [g.title || "Untitled"]),
+            nonEmpty(g.catch) ? el("p", { class: "muted small" }, [g.catch]) : el("span", {}),
+            el("div", { class: "metaRow" }, [
+              badgeIf(t(lang, "label.players"), g.players),
+              badgeIf(t(lang, "label.time"), g.time),
+              ...tagBadges
+            ].filter(Boolean)),
+            nonEmpty(g.feature1) ? el("p", { class: "featureOne" }, [`${t(lang, "games.featurePrefix")}：${g.feature1}`]) : el("span", {})
+          ]),
+          el("a", { class: "cardBtn", href: `game.html?id=${encodeURIComponent(g.id)}&lang=${lang}` }, [t(lang, "games.detail")])
+        ]);
+
+        grid.appendChild(card);
+      }
+    }
+
+    function update() {
+      const q = input.value.trim().toLowerCase();
+      const filtered = games
+        .filter(g => g && g.id)
+        .filter(g => matchQuery(g, q) && matchTags(g));
+
+      updateTagButtons();
+      count.textContent = t(lang, "games.resultCount", { shown: filtered.length, total: games.length });
+      renderCards(filtered);
+    }
+
+    update();
   }
 
-  function update(){
-    const q = input.value.trim().toLowerCase();
-    const filtered = games
-      .filter(g => g && g.id)
-      .filter(g => matchQuery(g, q) && matchTags(g));
-
-    updateTagButtons();
-    count.textContent = t(lang, "games.resultCount", { shown: filtered.length, total: games.length });
-    renderCards(filtered);
-  }
-
-  update();
-}
-
-  // index.html：トップ
-  async function renderHome(){
+  /**
+   * トップページ
+   */
+  async function renderHome() {
     const lang = getLang();
     applyCommonHeaderState(lang);
     applyHomeI18n(lang);
     document.title = t(lang, "home.pageTitle");
     const metaDesc = document.querySelector('meta[name="description"]');
-    if(metaDesc) metaDesc.setAttribute("content", t(lang, "home.metaDescription"));
+    if (metaDesc) metaDesc.setAttribute("content", t(lang, "home.metaDescription"));
     await renderHomeCarousel(lang);
     await renderEvents(lang);
 
     // お知らせ：空なら非表示
     const newsSection = document.getElementById("newsSection");
     const newsList = document.getElementById("newsList");
-    if(newsSection && newsList){
-      try{
+    if (newsSection && newsList) {
+      try {
         const items = normalizeAnnouncements(await loadJSON(ANNOUNCE_URL), lang);
-        if(items.length === 0){
+        if (items.length === 0) {
           newsSection.style.display = "none";
-        }else{
+        } else {
           newsSection.style.display = "";
           renderNewsSimpleList(newsList, items.slice(0, 3), lang);
         }
-      }catch(_){
+      } catch (_) {
         newsSection.style.display = "none";
       }
     }
@@ -1139,28 +1193,28 @@ async function renderGamesList(){
   }
 
   // game.html：詳細
-  function setLinkBtn(id, url){
+  function setLinkBtn(id, url) {
     const btn = document.getElementById(id);
-    if(!btn) return;
-    if(!nonEmpty(url)){ btn.style.display = "none"; return; }
+    if (!btn) return;
+    if (!nonEmpty(url)) { btn.style.display = "none"; return; }
     btn.style.display = "inline-block";
     btn.href = url.trim();
   }
 
-  async function renderGame(){
+  async function renderGame() {
     const lang = getLang();
     applyCommonHeaderState(lang);
 
     const params = new URLSearchParams(location.search);
     const id = params.get("id");
-    if(!id){
+    if (!id) {
       document.getElementById("gameTitle").textContent = t(lang, "game.notFound");
       return;
     }
 
     let g;
     try { g = localizeGame(await loadGame(id), lang); }
-    catch(_){
+    catch (_) {
       document.getElementById("gameTitle").textContent = t(lang, "game.loadError");
       return;
     }
@@ -1170,7 +1224,7 @@ async function renderGamesList(){
     document.getElementById("gameCatch").textContent = g.catch || "";
 
     const backBtn = document.querySelector(".closeBtn");
-    if(backBtn){
+    if (backBtn) {
       backBtn.setAttribute("href", `games.html?lang=${lang}`);
       backBtn.setAttribute("aria-label", t(lang, "game.backToListAria"));
     }
@@ -1186,7 +1240,7 @@ async function renderGamesList(){
       ["game.shop", document.querySelector("[data-i18n='game.shop']")]
     ];
     labelMap.forEach(([key, node]) => {
-      if(node) node.textContent = t(lang, key);
+      if (node) node.textContent = t(lang, key);
     });
 
     // 基本情報：無い項目は非表示
@@ -1197,14 +1251,14 @@ async function renderGamesList(){
     ];
     rows.forEach(([rowId, value]) => {
       const row = document.getElementById(rowId);
-      if(!row) return;
-      if(nonEmpty(value)) row.querySelector("dd").textContent = value;
+      if (!row) return;
+      if (nonEmpty(value)) row.querySelector("dd").textContent = value;
       else row.style.display = "none";
     });
 
     const desc = document.getElementById("description");
-    if(desc){
-      if(nonEmpty(g.description)) desc.textContent = g.description;
+    if (desc) {
+      if (nonEmpty(g.description)) desc.textContent = g.description;
       else desc.style.display = "none";
     }
 
@@ -1215,13 +1269,13 @@ async function renderGamesList(){
 
     const channelsBlock = document.getElementById("channelsBlock");
     const channelsText = document.getElementById("channelsText");
-    if(channelsBlock && channelsText){
+    if (channelsBlock && channelsText) {
       const labels = resolvedChannelLabels(g, lang);
-      if(labels.length > 0){
+      if (labels.length > 0) {
         const sep = lang === "ja" ? "、" : ", ";
         channelsText.textContent = labels.join(sep);
         channelsBlock.hidden = false;
-      }else{
+      } else {
         channelsText.textContent = "";
         channelsBlock.hidden = true;
       }
@@ -1234,37 +1288,37 @@ async function renderGamesList(){
     const next = document.getElementById("nextBtn");
 
     let i = 0;
-    function show(){
+    function show() {
       main.src = images[i];
-      if(prev) prev.disabled = images.length <= 1;
-      if(next) next.disabled = images.length <= 1;
+      if (prev) prev.disabled = images.length <= 1;
+      if (next) next.disabled = images.length <= 1;
     }
-    if(prev) prev.addEventListener("click", () => { i = (i - 1 + images.length) % images.length; show(); });
-    if(next) next.addEventListener("click", () => { i = (i + 1) % images.length; show(); });
+    if (prev) prev.addEventListener("click", () => { i = (i - 1 + images.length) % images.length; show(); });
+    if (next) next.addEventListener("click", () => { i = (i + 1) % images.length; show(); });
 
     show();
   }
 
-  function renderContactPage(){
+  function renderContactPage() {
     const lang = getLang();
     applyCommonHeaderState(lang);
     document.title = t(lang, "contact.pageTitle");
     const metaDesc = document.querySelector('meta[name="description"]');
-    if(metaDesc) metaDesc.setAttribute("content", t(lang, "contact.metaDescription"));
+    if (metaDesc) metaDesc.setAttribute("content", t(lang, "contact.metaDescription"));
 
     const frame = document.getElementById("googleFormFrame");
     const missing = document.getElementById("contactEmbedMissing");
-    if(!frame || !missing) return;
-    if(nonEmpty(CONTACT_FORM_EMBED_URL)){
+    if (!frame || !missing) return;
+    if (nonEmpty(CONTACT_FORM_EMBED_URL)) {
       frame.src = CONTACT_FORM_EMBED_URL.trim();
       frame.removeAttribute("hidden");
       missing.hidden = true;
-    }else{
+    } else {
       frame.removeAttribute("src");
       frame.setAttribute("hidden", "");
       missing.hidden = false;
     }
   }
 
-  return { renderGamesList, renderHome, renderGame, renderNewsPage, renderContactPage };
+  return { renderGamesList, renderHome, renderGame, renderNewsPage, renderNewsDetailPage, renderContactPage };
 })();
