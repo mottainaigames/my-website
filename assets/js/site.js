@@ -61,10 +61,10 @@ window.MG = (() => {
       "game.nextImageAria": "次の画像",
       "game.mainImageAlt": "ゲーム画像",
       "news.pageTitle": "Mottainai Games - News",
-      "news.latestHeading": "最新のお知らせ",
-      "news.latestLead": "最新3件を表示しています。",
-      "news.archiveHeading": "お知らせ記事",
-      "news.archiveLead": "過去のお知らせ一覧です。",
+      "news.listHeading": "お知らせ一覧",
+      "news.listLead": "",
+      "news.archiveHeading": "",
+      "news.archiveLead": "",
       "news.empty": "現在お知らせはありません。",
       "news.fallbackTitle": "お知らせ",
       "events.empty": "イベント情報は準備中です。",
@@ -153,10 +153,10 @@ window.MG = (() => {
       "game.nextImageAria": "Next image",
       "game.mainImageAlt": "Game image",
       "news.pageTitle": "Mottainai Games - News",
-      "news.latestHeading": "Latest News",
-      "news.latestLead": "Showing the 3 most recent updates.",
-      "news.archiveHeading": "News Archive",
-      "news.archiveLead": "Browse previous announcements.",
+      "news.listHeading": "News List",
+      "news.listLead": "",
+      "news.archiveHeading": "",
+      "news.archiveLead": "",
       "news.empty": "No announcements yet.",
       "news.fallbackTitle": "News",
       "events.empty": "Event information will be posted soon.",
@@ -245,10 +245,10 @@ window.MG = (() => {
       "game.nextImageAria": "下一张图片",
       "game.mainImageAlt": "游戏图片",
       "news.pageTitle": "Mottainai Games - 资讯",
-      "news.latestHeading": "最新资讯",
-      "news.latestLead": "显示最近 3 条更新。",
-      "news.archiveHeading": "资讯归档",
-      "news.archiveLead": "查看过去发布的公告。",
+      "news.listHeading": "资讯列表",
+      "news.listLead": "",
+      "news.archiveHeading": "",
+      "news.archiveLead": "",
       "news.empty": "暂无资讯。",
       "news.fallbackTitle": "资讯",
       "events.empty": "活动信息即将发布。",
@@ -566,6 +566,11 @@ window.MG = (() => {
     });
   }
 
+  /**
+   * 共通ヘッダーの言語切り替えとURL整形
+   * 
+   * @param {*} lang 
+   */
   function applyCommonHeaderState(lang) {
     document.documentElement.setAttribute("lang", lang);
     const dict = HOME_I18N[lang] || HOME_I18N.ja;
@@ -956,9 +961,12 @@ window.MG = (() => {
    * ニュース詳細ページ
    */
   async function renderNewsDetailPage() {
+    const lang = getLang();
+    applyCommonHeaderState(lang);
+    document.title = t(lang, "newsDetail.pageTitle");
+
     const params = new URLSearchParams(location.search);
     const id = params.get("id");
-    const lang = getLang();
     const titleEl = document.getElementById('newsDetailTitle');
     const contentEl = document.getElementById('newsDetailContent');
     const backLink = document.getElementById('newsDetailBackLink');
