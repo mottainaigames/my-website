@@ -22,7 +22,7 @@ window.MG = (() => {
       "product.lead": "制作中の作品と、Mottainai Gamesの活動内容を紹介します。",
       "intro.heading": "サークル紹介",
       "intro.body": "2022年に設立されたサークルです！<br>ボードゲームを製作しています！",
-      "news.heading": "お知らせ",
+      "news.heading": "最新のお知らせ",
       "news.lead": "最新の更新情報や公開情報を掲載します。",
       "events.heading": "出展・参加イベント",
       "events.lead": "これまでの活動実績と、今後の参加予定イベントです。",
@@ -114,7 +114,7 @@ window.MG = (() => {
       "product.lead": "Discover our board games and learn about Mottainai Games.",
       "intro.heading": "About Us",
       "intro.body": "Founded in 2022,<br>we design and publish original board games.",
-      "news.heading": "News",
+      "news.heading": "Latest news",
       "news.lead": "Latest updates, announcements, and release information.",
       "events.heading": "Events & Exhibitions",
       "events.lead": "Our event history and upcoming appearances.",
@@ -653,6 +653,14 @@ window.MG = (() => {
       .sort((a, b) => (a.date < b.date ? 1 : -1));
   }
 
+  /**
+   * トップページ　最新お知らせ表示
+   * 
+   * @param {*} target 
+   * @param {*} items 
+   * @param {*} lang 
+   * @returns 
+   */
   function renderNewsSimpleList(target, items, lang) {
     if (!target) return;
     target.innerHTML = "";
@@ -662,8 +670,9 @@ window.MG = (() => {
     }
     items.forEach(it => {
       const sep = lang === "en" ? ": " : "：";
-      const line = `${it.date ? it.date + sep : ""}${it.title}`;
-      target.appendChild(el("li", {}, [line]));
+      const titleLink = el("a", { href: `news-detail.html?id=${it.id}&lang=${lang}` }, [it.title]);
+      const liContent = it.date ? [it.date + sep, titleLink] : [titleLink];
+      target.appendChild(el("li", {}, liContent));
     });
   }
 
