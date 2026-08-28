@@ -25,7 +25,7 @@
   "description_en": "English version coming soon",
   "description_zh": "中文版即将推出",
   "images": [
-    "assets/images/game-3-package.png"
+    "assets/images/game-3-package1.png","assets/images/game-3-package2.png""assets/images/game-3-package3.png"
   ],
   "links": {
     "rulesPdf": "https://gamemarket.jp/game/188105",
