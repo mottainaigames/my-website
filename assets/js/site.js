@@ -52,7 +52,7 @@ window.MG = (() => {
       "game.basicInfo": "基本情報",
       "game.descriptionHeading": "ゲーム詳細",
       "game.linksHeading": "リンク",
-      "game.rules": "ゲームマーケット",
+      "game.rules": "ゲームマーケットページ",
       "game.video": "動画",
       "game.shop": "ストア",
       "game.channelsHeading": "販売中",
