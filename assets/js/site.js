@@ -971,19 +971,35 @@ window.MG = (() => {
    */
   async function renderNewsDetailPage() {
     const lang = getLang();
-    applyCommonHeaderState(lang);
-    document.title = t(lang, "newsDetail.pageTitle");
-
     const params = new URLSearchParams(location.search);
     const id = params.get("id");
+    const requestedLang = (params.get("lang") || "").toLowerCase();
+    
     const titleEl = document.getElementById('newsDetailTitle');
     const contentEl = document.getElementById('newsDetailContent');
     const backLink = document.getElementById('newsDetailBackLink');
 
-    if (!id || !contentEl) return;
+    // idが無い場合はnews.htmlにリダイレクト（存在しない記事へのアクセスを防ぐ）
+    if (!id) {
+      window.location.href = `news.html?lang=${encodeURIComponent(lang)}`;
+      return;
+    }
+
+    // 不正な言語パラメータの場合、URLを修正
+    if (requestedLang && !SUPPORTED_LANGS.includes(requestedLang)) {
+      const url = new URL(location.href);
+      url.searchParams.set("lang", lang);
+      window.history.replaceState({}, "", url.href);
+    }
+
+    if (!contentEl) return;
+
+    applyCommonHeaderState(lang);
+    document.title = t(lang, "newsDetail.pageTitle");
+
     if (backLink) backLink.href = `news.html?lang=${encodeURIComponent(lang)}`;
 
-    // TODO: ファイルが読み込めない場合にエラーが発生する
+    // マークダウンファイルを読み込む
     const loadMarkdown = path => fetch(path).then(res => {
       if (!res.ok) throw new Error(path + ' が見つかりません');
       return res.text();
@@ -993,6 +1009,7 @@ window.MG = (() => {
       breaks: true
     });
 
+    // 指定言語 → 日本語版の順で試す
     loadMarkdown(`data/news/${id}/${lang}.md`)
       .then(text => {
         contentEl.innerHTML = marked.parse(text);
@@ -1004,7 +1021,8 @@ window.MG = (() => {
           })
       )
       .catch(error => {
-        contentEl.innerHTML = '<p>お知らせを読み込めませんでした。</p>';
+        const errorMsg = `<p>お知らせは見つかりませんでした。</p>`;
+        contentEl.innerHTML = errorMsg;
         console.error(error);
       });
 
