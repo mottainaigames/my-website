@@ -1,0 +1,36 @@
+{
+  "id": "game-4",
+  "title": "不労所得",
+  "title_en": "Passive Income",
+  "title_zh": "被動收入",
+  "catch": "手軽に遊べる、戦略ダイスゲーム",
+  "catch_en": "A quick strategic dice game",
+  "catch_zh": "轻松上手的策略型骰子游戏",
+  "players": "2-5人",
+  "time": "3-10分",
+  "age": "7歳+",
+  "tags": [
+    "ボードゲーム"
+  ],
+  "tags_en": [
+    "Board Game"
+  ],
+  "tags_zh": [
+    "桌上游戏"
+  ],
+  "feature1": "不労所得を積み上げる麻雀ゲーム！",
+  "feature1_en": "",
+  "feature1_zh": "",
+  "description": "「働かずにお金が欲しい！」\n先行投資をする？それとも資産をためる？\n特殊効果のあるお手軽マーシャン！",
+  "description_en": "English version coming soon",
+  "description_zh": "中文版即将推出",
+  "images": [
+    "assets/images/game-3-package1.png",
+  ],
+  "links": {
+    "rulesPdf": "https://gamemarket.jp/game/188786",
+    "shopUrl": "",
+    "videoUrl": ""
+  },
+  "publishedAt": "2026-10-10"
+}
