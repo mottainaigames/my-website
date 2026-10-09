@@ -3,7 +3,7 @@
   "title": "不労所得",
   "title_en": "Passive Income",
   "title_zh": "被動收入",
-  "catch": "手軽に遊べる、戦略ダイスゲーム",
+  "catch": "お手軽麻雀風ゲーム",
   "catch_en": "A quick strategic dice game",
   "catch_zh": "轻松上手的策略型骰子游戏",
   "players": "2-5人",
@@ -25,7 +25,7 @@
   "description_en": "English version coming soon",
   "description_zh": "中文版即将推出",
   "images": [
-    "assets/images/game-3-package1.png",
+    "assets/images/game-4-package1.png",
   ],
   "links": {
     "rulesPdf": "https://gamemarket.jp/game/188786",
