@@ -12,11 +12,13 @@
     { "name": "ボドゲガレージ2025", "name_en": "Boardgame Garage 2025", "name_zh": "桌游车库 2025", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
     { "name": "ゲームマーケット2025春", "name_en": "Game Market 2025 Spring", "name_zh": "Game Market 2025 春", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
     { "name": "ゲームマーケット2025秋", "name_en": "Game Market 2025 Autumn", "name_zh": "Game Market 2025 秋", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
-    { "name": "Board Game Business Expo Japan2026", "name_en": "Board Game Business Expo Japan 2026", "name_zh": "Board Game Business Expo Japan 2026", "status": "出展", "location": "大阪", "location_en": "Osaka", "location_zh": "大阪" }
-  ],
-  "upcoming": [
+    { "name": "Board Game Business Expo Japan2026", "name_en": "Board Game Business Expo Japan 2026", "name_zh": "Board Game Business Expo Japan 2026", "status": "出展", "location": "大阪", "location_en": "Osaka", "location_zh": "大阪" },
+    { "name": "ゲームマーケット2026春", "name_en": "Game Market 2026 Spring", "name_zh": "Game Market 2026 春", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
     { "name": "さっぽろ卓ゲっと2026", "name_en": "Sapporo Taku-Get 2026", "name_zh": "札幌桌游展 2026", "status": "出展", "location": "北海道", "location_en": "Hokkaido", "location_zh": "北海道" },
     { "name": "Taiwan Original Boardgame Expo2026", "name_en": "Taiwan Original Boardgame Expo 2026", "name_zh": "Taiwan Original Boardgame Expo 2026", "status": "出展", "location": "台湾", "location_en": "Taiwan", "location_zh": "台湾" },
     { "name": "Gen Con2026", "name_en": "Gen Con 2026", "name_zh": "Gen Con 2026", "status": "参加", "location": "アメリカ", "location_en": "USA", "location_zh": "美国" }
+  ],
+  "upcoming": [
+    { "name": "ゲームマーケット2026秋", "name_en": "Game Market 2026 Autumn", "name_zh": "Game Market 2026　秋", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" }
   ]
 }
