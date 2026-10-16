@@ -1328,10 +1328,21 @@ window.MG = (() => {
     const images = (Array.isArray(g.links?.rulesImages) ? g.links.rulesImages : [])
       .map(src => (typeof src === "string" ? src.trim() : ""))
       .filter(nonEmpty);
+    const rulesUrl = nonEmpty(g.links?.rulesUrl) ? g.links.rulesUrl.trim() : "";
     const pdf = nonEmpty(g.links?.rulesPdf) ? g.links.rulesPdf.trim() : "";
 
     btn.textContent = t(lang, "game.rules");
     btn.onclick = null;
+
+    // 固定公開URL（QR配布用）を最優先
+    if(rulesUrl){
+      btn.hidden = false;
+      btn.style.display = "inline-block";
+      btn.removeAttribute("target");
+      btn.removeAttribute("rel");
+      btn.setAttribute("href", rulesUrl);
+      return;
+    }
 
     if(images.length > 0 && g.id){
       btn.hidden = false;
@@ -1392,6 +1403,12 @@ window.MG = (() => {
         empty.hidden = false;
         empty.textContent = t(lang, "game.rulebookEmpty");
       }
+      return;
+    }
+
+    // 固定公開URLがある作品はそちらへ誘導（QRと同じページを見る）
+    if(nonEmpty(g.links?.rulesUrl)){
+      location.replace(g.links.rulesUrl.trim());
       return;
     }
 
