@@ -3,6 +3,7 @@ window.MG = (() => {
   const ANNOUNCE_URL = "data/news/index.json";
   // const ANNOUNCE_URL = "data/announcements.json";
   const EVENTS_URL = "data/events.json";
+  const COMPANY_URL = "data/company.json";
   const PLACEHOLDER = "assets/images/placeholder.svg";
   /** Googleフォーム「送信」→「<>」埋め込みの iframe用 src（…/viewform?embedded=true までのURL）。空のときは案内文のみ表示 */
   const CONTACT_FORM_EMBED_URL = "https://docs.google.com/forms/d/e/1FAIpQLSf2IdIZacgrHfva-No-JgaYwkyNLkptrJGaWBYlKTKvquL5Sg/viewform?embedded=true";
@@ -14,6 +15,7 @@ window.MG = (() => {
       "nav.home": "Home",
       "nav.game": "Game",
       "nav.news": "News",
+      "nav.about": "会社概要",
       "nav.contact": "お問い合わせ",
       "lang.ja": "日本語",
       "lang.en": "English",
@@ -21,8 +23,29 @@ window.MG = (() => {
       "product.heading": "商品紹介 + サークル紹介",
       "product.lead": "制作中の作品と、Mottainai Gamesの活動内容を紹介します。",
       "intro.heading": "サークル紹介",
-      "intro.body": "2022年に設立されたサークルです！<br>ボードゲームを製作しています！",
-      "news.heading": "最新のお知らせ",
+      "intro.body": "2022年設立。社会風刺や日常をテーマにしたボードゲームを企画・製造・販売しています。<br>『定時退社』累計出荷7,000部超、シリーズ累計約1万部。<br><a href=\"about.html\" data-keep-lang=\"true\">会社概要はこちら</a>",
+      "about.pageTitle": "Mottainai Games - 会社概要",
+      "about.metaDescription": "Mottainai Games の会社概要・取引先向け情報",
+      "about.heading": "会社概要",
+      "about.lead": "取引・掲載審査の際にご参照いただける情報です。",
+      "about.achievementsHeading": "主な実績",
+      "about.eventsHeading": "出展・参加",
+      "about.bizNote": "卸売・取引に関するお問い合わせ：",
+      "about.label.name": "屋号 / ブランド",
+      "about.label.founded": "設立",
+      "about.label.representative": "代表者",
+      "about.label.address": "所在地",
+      "about.label.tel": "電話",
+      "about.label.email": "E-mail（一般）",
+      "about.label.emailBiz": "E-mail（取引）",
+      "about.label.fax": "FAX",
+      "about.label.invoice": "インボイス登録番号",
+      "about.label.business": "事業内容",
+      "about.label.retail": "小売展開例",
+      "about.label.products": "商品ラインナップ",
+      "about.label.eventsDomestic": "国内",
+      "about.label.eventsInternational": "海外",
+      "news.heading": "お知らせ",
       "news.lead": "最新の更新情報や公開情報を掲載します。",
       "events.heading": "出展・参加イベント",
       "events.lead": "これまでの活動実績と、今後の参加予定イベントです。",
@@ -33,6 +56,7 @@ window.MG = (() => {
       "links.x": "X（旧Twitter）",
       "links.gamemarket": "ゲームマーケット作品ページ",
       "links.mail": "メール",
+      "links.mailBiz": "取引・卸売",
       "games.pageTitle": "Mottainai Games - ゲーム一覧",
       "games.searchPlaceholder": "検索（タイトル・キャッチ・説明）",
       "games.filterAria": "検索と絞り込み",
@@ -52,7 +76,9 @@ window.MG = (() => {
       "game.basicInfo": "基本情報",
       "game.descriptionHeading": "ゲーム詳細",
       "game.linksHeading": "リンク",
-      "game.rules": "ゲームマーケットページ",
+      "game.rules": "ルールブック",
+      "game.rulebookCloseAria": "ルールブックを閉じる",
+      "game.rulebookPageAlt": "ルールブック {page}ページ目",
       "game.video": "動画",
       "game.shop": "ストア",
       "game.channelsHeading": "販売中",
@@ -90,6 +116,7 @@ window.MG = (() => {
       "a11y.newsSection": "お知らせ",
       "a11y.eventsSection": "出展・参加イベント",
       "a11y.linksSection": "リンクと連絡先",
+      "a11y.aboutPage": "会社概要",
       "a11y.circleLogo": "サークルロゴ",
       "a11y.heroLogo": "Mottainai Games ロゴ",
       "contact.pageTitle": "Mottainai Games - お問い合わせ",
@@ -106,6 +133,7 @@ window.MG = (() => {
       "nav.home": "Home",
       "nav.game": "Game",
       "nav.news": "News",
+      "nav.about": "About",
       "nav.contact": "Contact",
       "lang.ja": "Japanese",
       "lang.en": "English",
@@ -113,8 +141,29 @@ window.MG = (() => {
       "product.heading": "Games + About Us",
       "product.lead": "Discover our board games and learn about Mottainai Games.",
       "intro.heading": "About Us",
-      "intro.body": "Founded in 2022,<br>we design and publish original board games.",
-      "news.heading": "Latest news",
+      "intro.body": "Founded in 2022. We plan, manufacture, and sell board games themed on social satire and everyday life.<br>Over 7,000 units of \"Leave on Time\" shipped; ~10,000 across the series.<br><a href=\"about.html\" data-keep-lang=\"true\">Company profile</a>",
+      "about.pageTitle": "Mottainai Games - About",
+      "about.metaDescription": "Company profile and business information for Mottainai Games.",
+      "about.heading": "Company Profile",
+      "about.lead": "Information for wholesale, retail listing, and business inquiries.",
+      "about.achievementsHeading": "Key Milestones",
+      "about.eventsHeading": "Events & Exhibitions",
+      "about.bizNote": "Wholesale and business inquiries:",
+      "about.label.name": "Brand",
+      "about.label.founded": "Founded",
+      "about.label.representative": "Representative",
+      "about.label.address": "Address",
+      "about.label.tel": "Phone",
+      "about.label.email": "Email (general)",
+      "about.label.emailBiz": "Email (business)",
+      "about.label.fax": "Fax",
+      "about.label.invoice": "Invoice Registration No.",
+      "about.label.business": "Business",
+      "about.label.retail": "Retail Partners",
+      "about.label.products": "Product Line",
+      "about.label.eventsDomestic": "Japan",
+      "about.label.eventsInternational": "International",
+      "news.heading": "News",
       "news.lead": "Latest updates, announcements, and release information.",
       "events.heading": "Events & Exhibitions",
       "events.lead": "Our event history and upcoming appearances.",
@@ -125,6 +174,7 @@ window.MG = (() => {
       "links.x": "X (formerly Twitter)",
       "links.gamemarket": "Game Market Booth Page",
       "links.mail": "Email",
+      "links.mailBiz": "Wholesale / Business",
       "games.pageTitle": "Mottainai Games - Games",
       "games.searchPlaceholder": "Search by title, tagline, or description",
       "games.filterAria": "Search and filters",
@@ -144,7 +194,9 @@ window.MG = (() => {
       "game.basicInfo": "Basic Info",
       "game.descriptionHeading": "Game Details",
       "game.linksHeading": "Links",
-      "game.rules": "Rulebook (PDF)",
+      "game.rules": "Rulebook",
+      "game.rulebookCloseAria": "Close rulebook",
+      "game.rulebookPageAlt": "Rulebook page {page}",
       "game.video": "Video",
       "game.shop": "Store",
       "game.channelsHeading": "Where to buy",
@@ -182,6 +234,7 @@ window.MG = (() => {
       "a11y.newsSection": "News",
       "a11y.eventsSection": "Events and exhibitions",
       "a11y.linksSection": "Links and contact",
+      "a11y.aboutPage": "Company profile",
       "a11y.circleLogo": "Circle logo",
       "a11y.heroLogo": "Mottainai Games logo",
       "contact.pageTitle": "Mottainai Games - Contact",
@@ -198,6 +251,7 @@ window.MG = (() => {
       "nav.home": "首页",
       "nav.game": "游戏",
       "nav.news": "资讯",
+      "nav.about": "公司概要",
       "nav.contact": "联系",
       "lang.ja": "日语",
       "lang.en": "英语",
@@ -205,7 +259,28 @@ window.MG = (() => {
       "product.heading": "产品 + 关于我们",
       "product.lead": "了解我们的桌游作品与 Mottainai Games 的活动内容。",
       "intro.heading": "关于我们",
-      "intro.body": "我们成立于 2022 年，<br>专注于原创桌游的设计与发行。",
+      "intro.body": "成立于2022年。我们策划、制造并销售以社会讽刺与日常生活为主题的桌游。<br>《准时下班》累计出货7,000部以上，系列累计约1万部。<br><a href=\"about.html\" data-keep-lang=\"true\">公司概要</a>",
+      "about.pageTitle": "Mottainai Games - 公司概要",
+      "about.metaDescription": "Mottainai Games 公司概要及商务信息。",
+      "about.heading": "公司概要",
+      "about.lead": "供交易与上架审核参考的信息。",
+      "about.achievementsHeading": "主要业绩",
+      "about.eventsHeading": "参展与活动",
+      "about.bizNote": "批发与交易咨询：",
+      "about.label.name": "品牌",
+      "about.label.founded": "成立",
+      "about.label.representative": "代表",
+      "about.label.address": "地址",
+      "about.label.tel": "电话",
+      "about.label.email": "邮箱（一般）",
+      "about.label.emailBiz": "邮箱（商务）",
+      "about.label.fax": "传真",
+      "about.label.invoice": "发票注册号",
+      "about.label.business": "业务内容",
+      "about.label.retail": "零售渠道",
+      "about.label.products": "产品线",
+      "about.label.eventsDomestic": "国内",
+      "about.label.eventsInternational": "海外",
       "news.heading": "最新资讯",
       "news.lead": "发布最新动态、公告与发售信息。",
       "events.heading": "参展与活动",
@@ -217,6 +292,7 @@ window.MG = (() => {
       "links.x": "X（原 Twitter）",
       "links.gamemarket": "Game Market 展位页面",
       "links.mail": "邮箱",
+      "links.mailBiz": "批发·商务",
       "games.pageTitle": "Mottainai Games - 游戏列表",
       "games.searchPlaceholder": "按标题、副标题或说明搜索",
       "games.filterAria": "搜索与筛选",
@@ -236,7 +312,9 @@ window.MG = (() => {
       "game.basicInfo": "基本信息",
       "game.descriptionHeading": "游戏详情",
       "game.linksHeading": "相关链接",
-      "game.rules": "说明书（PDF）",
+      "game.rules": "规则书",
+      "game.rulebookCloseAria": "关闭规则书",
+      "game.rulebookPageAlt": "规则书第{page}页",
       "game.video": "视频",
       "game.shop": "商店",
       "game.channelsHeading": "购买渠道",
@@ -274,6 +352,7 @@ window.MG = (() => {
       "a11y.newsSection": "资讯",
       "a11y.eventsSection": "参展与活动",
       "a11y.linksSection": "链接与联系方式",
+      "a11y.aboutPage": "公司概要",
       "a11y.circleLogo": "社团标志",
       "a11y.heroLogo": "Mottainai Games 标志",
       "contact.pageTitle": "Mottainai Games - 联系",
@@ -526,7 +605,7 @@ window.MG = (() => {
       else a.removeAttribute("aria-current");
     });
 
-    const keepLangLinks = document.querySelectorAll('a[href="index.html"], a[href="games.html"], a[href="news.html"], a[href="contact.html"]');
+    const keepLangLinks = document.querySelectorAll('a[href="index.html"], a[href="games.html"], a[href="news.html"], a[href="about.html"], a[href="contact.html"]');
     keepLangLinks.forEach(a => {
       const href = a.getAttribute("href");
       if (!href) return;
@@ -535,6 +614,12 @@ window.MG = (() => {
       } else {
         a.setAttribute("href", setParamInUrl(href, "lang", lang));
       }
+    });
+
+    document.querySelectorAll('a[data-keep-lang="true"]').forEach(a => {
+      const href = a.getAttribute("href");
+      if(!href) return;
+      a.setAttribute("href", setParamInUrl(href, "lang", lang));
     });
   }
 
@@ -1236,7 +1321,80 @@ window.MG = (() => {
     btn.href = url.trim();
   }
 
-  async function renderGame() {
+  function setupRulesButton(g, lang){
+    const btn = document.getElementById("rulesBtn");
+    if(!btn) return;
+
+    const images = (Array.isArray(g.links?.rulesImages) ? g.links.rulesImages : [])
+      .map(src => (typeof src === "string" ? src.trim() : ""))
+      .filter(nonEmpty);
+    const pdf = nonEmpty(g.links?.rulesPdf) ? g.links.rulesPdf.trim() : "";
+
+    btn.textContent = t(lang, "game.rules");
+    btn.onclick = null;
+    btn.removeAttribute("href");
+    btn.removeAttribute("target");
+    btn.removeAttribute("rel");
+
+    if(images.length > 0){
+      btn.hidden = false;
+      btn.style.display = "inline-block";
+      btn.onclick = () => openRulebookDialog(images, lang);
+      return;
+    }
+
+    if(pdf){
+      // PDF等の外部URLがある場合は新規タブで開く
+      btn.hidden = false;
+      btn.style.display = "inline-block";
+      btn.onclick = () => {
+        window.open(pdf, "_blank", "noopener,noreferrer");
+      };
+      return;
+    }
+
+    btn.hidden = true;
+    btn.style.display = "none";
+  }
+
+  function openRulebookDialog(images, lang){
+    const dialog = document.getElementById("rulebookDialog");
+    const gallery = document.getElementById("rulebookGallery");
+    const closeBtn = document.getElementById("rulebookCloseBtn");
+    const title = document.getElementById("rulebookDialogTitle");
+    if(!dialog || !gallery) return;
+
+    if(title) title.textContent = t(lang, "game.rules");
+    if(closeBtn) closeBtn.setAttribute("aria-label", t(lang, "game.rulebookCloseAria"));
+
+    gallery.innerHTML = "";
+    images.forEach((src, idx) => {
+      const figure = document.createElement("figure");
+      figure.className = "rulebookFigure";
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = t(lang, "game.rulebookPageAlt", { page: String(idx + 1) });
+      img.loading = idx === 0 ? "eager" : "lazy";
+      figure.appendChild(img);
+      gallery.appendChild(figure);
+    });
+
+    if(typeof dialog.showModal === "function") dialog.showModal();
+    else dialog.setAttribute("open", "");
+
+    const onClose = () => {
+      if(typeof dialog.close === "function") dialog.close();
+      else dialog.removeAttribute("open");
+    };
+    if(closeBtn){
+      closeBtn.onclick = onClose;
+    }
+    dialog.onclick = (e) => {
+      if(e.target === dialog) onClose();
+    };
+  }
+
+  async function renderGame(){
     const lang = getLang();
     applyCommonHeaderState(lang);
 
@@ -1298,7 +1456,7 @@ window.MG = (() => {
     }
 
     // リンク（無いものは非表示）
-    setLinkBtn("rulesBtn", g.links?.rulesPdf);
+    setupRulesButton(g, lang);
     setLinkBtn("shopBtn", g.links?.shopUrl);
     setLinkBtn("videoBtn", g.links?.videoUrl);
 
@@ -1355,5 +1513,105 @@ window.MG = (() => {
     }
   }
 
-  return { renderGamesList, renderHome, renderGame, renderNewsPage, renderNewsDetailPage, renderContactPage };
+  function companyField(data, key, lang){
+    const val = data?.[key];
+    if(val == null) return "";
+    if(typeof val === "string") return val;
+    return val[lang] || val.ja || "";
+  }
+
+  function addCompanyRow(table, labelKey, value, lang){
+    if(!nonEmpty(value)) return;
+    const tr = document.createElement("tr");
+    const th = document.createElement("th");
+    th.textContent = t(lang, labelKey);
+    const td = document.createElement("td");
+    td.textContent = value;
+    tr.append(th, td);
+    table.appendChild(tr);
+  }
+
+  async function renderAboutPage(){
+    const lang = getLang();
+    applyCommonHeaderState(lang);
+    document.title = t(lang, "about.pageTitle");
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute("content", t(lang, "about.metaDescription"));
+
+    const desc = document.getElementById("aboutDescription");
+    const table = document.getElementById("companyTable");
+    const achievements = document.getElementById("aboutAchievements");
+    const events = document.getElementById("aboutEvents");
+    const bizEmail = document.getElementById("aboutBizEmail");
+    if(!table) return;
+
+    let data;
+    try{
+      data = await loadJSON(COMPANY_URL);
+    }catch(_){
+      if(desc) desc.textContent = t(lang, "game.loadError");
+      return;
+    }
+
+    if(desc) desc.textContent = companyField(data, "description", lang);
+
+    table.innerHTML = "";
+    const brandName = `${data.name}（${companyField(data, "nameAlt", lang)}）`;
+    addCompanyRow(table, "about.label.name", brandName, lang);
+    addCompanyRow(table, "about.label.founded", data.founded, lang);
+    addCompanyRow(table, "about.label.representative", companyField(data, "representative", lang), lang);
+    addCompanyRow(table, "about.label.address", companyField(data, "address", lang), lang);
+    addCompanyRow(table, "about.label.tel", data.tel, lang);
+    if(nonEmpty(data.emailGeneral)){
+      const row = document.createElement("tr");
+      row.innerHTML = `<th>${t(lang, "about.label.email")}</th><td><a href="mailto:${data.emailGeneral}">${data.emailGeneral}</a></td>`;
+      table.appendChild(row);
+    }
+    if(nonEmpty(data.emailBiz)){
+      const row = document.createElement("tr");
+      row.innerHTML = `<th>${t(lang, "about.label.emailBiz")}</th><td><a href="mailto:${data.emailBiz}">${data.emailBiz}</a></td>`;
+      table.appendChild(row);
+    }
+    addCompanyRow(table, "about.label.fax", companyField(data, "fax", lang), lang);
+    addCompanyRow(table, "about.label.invoice", data.invoiceNumber, lang);
+    addCompanyRow(table, "about.label.business", companyField(data, "business", lang), lang);
+    addCompanyRow(table, "about.label.retail", companyField(data, "retailChannels", lang), lang);
+    addCompanyRow(table, "about.label.products", companyField(data, "products", lang), lang);
+
+    if(achievements){
+      achievements.innerHTML = "";
+      (Array.isArray(data.achievements) ? data.achievements : []).forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item[lang] || item.ja || "";
+        achievements.appendChild(li);
+      });
+    }
+
+    if(events){
+      events.innerHTML = "";
+      const domestic = companyField(data, "eventsDomestic", lang);
+      const international = companyField(data, "eventsInternational", lang);
+      if(nonEmpty(domestic)){
+        const dt = document.createElement("dt");
+        dt.textContent = t(lang, "about.label.eventsDomestic");
+        const dd = document.createElement("dd");
+        dd.textContent = domestic;
+        events.append(dt, dd);
+      }
+      if(nonEmpty(international)){
+        const dt = document.createElement("dt");
+        dt.textContent = t(lang, "about.label.eventsInternational");
+        const dd = document.createElement("dd");
+        dd.textContent = international;
+        events.append(dt, dd);
+      }
+    }
+
+    if(bizEmail && nonEmpty(data.emailBiz)){
+      bizEmail.href = `mailto:${data.emailBiz}`;
+      bizEmail.textContent = data.emailBiz;
+    }
+  }
+
+  return { renderGamesList, renderHome, renderGame, renderNewsPage, renderNewsDetailPage, renderContactPage, renderAboutPage };
 })();

@@ -222,6 +222,7 @@ a:hover{text-decoration:underline}
 .section-news{background:rgba(125,211,252,0.08)}
 .section-events{background:rgba(167,139,250,0.08)}
 .section-links{background:rgba(45,212,191,0.08)}
+.section-about{background:rgba(251,191,36,0.06)}
 
 .sectionHead{
   display:flex;
@@ -502,6 +503,68 @@ a:hover{text-decoration:underline}
 .muted{color:var(--muted)}
 .small{font-size:0.9em}
 
+.aboutDescription{
+  margin:0 0 14px;
+  line-height:1.7;
+}
+.aboutSubTitle{
+  margin:16px 0 6px;
+  font-size:0.95em;
+  color:var(--muted);
+  letter-spacing:0.03em;
+}
+.companyTableWrap{
+  overflow-x:auto;
+  margin:0 0 8px;
+}
+.companyTable{
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.92em;
+}
+.companyTable th,
+.companyTable td{
+  border:1px solid var(--line);
+  padding:8px 10px;
+  vertical-align:top;
+  text-align:left;
+}
+.companyTable th{
+  width:30%;
+  background:rgba(255,255,255,0.04);
+  font-weight:600;
+  white-space:nowrap;
+}
+.companyTable td a{
+  color:var(--accent);
+  word-break:break-all;
+}
+.aboutEventsList{
+  margin:0;
+  display:grid;
+  gap:8px;
+}
+.aboutEventsList dt{
+  font-weight:600;
+  font-size:0.88em;
+  color:var(--muted);
+}
+.aboutEventsList dd{
+  margin:0 0 8px;
+  padding-left:0;
+}
+.aboutBizNote{
+  margin:16px 0 0;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:rgba(255,255,255,0.03);
+  font-size:0.92em;
+}
+.aboutHeroText a{
+  color:var(--accent);
+}
+
 .footer{
   border-top:1px solid var(--line);
   margin-top:16px;
@@ -528,8 +591,70 @@ a:hover{text-decoration:underline}
   border-radius:12px;
   border:1px solid var(--line);
   background:rgba(255,255,255,0.03);
+  color:inherit;
+  font:inherit;
+  text-decoration:none;
+}
+button.btn{
+  cursor:pointer;
+  appearance:none;
+  -webkit-appearance:none;
 }
 .btn:hover{background:rgba(125,211,252,0.08)}
+
+.rulebookDialog{
+  width:min(920px, calc(100vw - 24px));
+  max-height:calc(100vh - 24px);
+  margin:auto;
+  padding:0;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--card, #12141c);
+  color:var(--text);
+  box-shadow:0 20px 60px rgba(0,0,0,0.55);
+}
+.rulebookDialog::backdrop{
+  background:rgba(0,0,0,0.72);
+}
+.rulebookDialogBar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  background:inherit;
+  z-index:1;
+}
+.rulebookDialogBar h2{
+  margin:0;
+  font-size:1.05em;
+}
+.rulebookCloseBtn{
+  flex:0 0 auto;
+}
+.rulebookGallery{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  padding:14px;
+  overflow:auto;
+  max-height:calc(100vh - 100px);
+}
+.rulebookFigure{
+  margin:0;
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+}
+.rulebookFigure img{
+  display:block;
+  width:100%;
+  height:auto;
+}
 
 /* games list grid: responsive columns */
 .grid{

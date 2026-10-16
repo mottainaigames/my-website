@@ -1,0 +1,70 @@
+{
+  "name": "Mottainai Games",
+  "nameAlt": {
+    "ja": "モッタイナイゲームズ",
+    "en": "Mottainai Games",
+    "zh": "Mottainai Games"
+  },
+  "founded": "2022",
+  "representative": {
+    "ja": "山口 泰生",
+    "en": "Yasuo Yamaguchi",
+    "zh": "山口 泰生"
+  },
+  "address": {
+    "ja": "〒160-0022 東京都新宿区新宿1-36-2 新宿第七葉山ビル3F",
+    "en": "Shinjuku Dai7 Hayama Bldg 3F, 1-36-2 Shinjuku, Shinjuku-ku, Tokyo 160-0022, Japan",
+    "zh": "〒160-0022 东京都新宿区新宿1-36-2 新宿第七叶山大厦3F"
+  },
+  "tel": "080-8578-1479",
+  "emailBiz": "biz@mottainaigames.com",
+  "emailGeneral": "mottainai767+contact@gmail.com",
+  "fax": {
+    "ja": "なし",
+    "en": "N/A",
+    "zh": "无"
+  },
+  "invoiceNumber": "T9810931386004",
+  "business": {
+    "ja": "オリジナルボードゲーム・カードゲームの企画、製造、販売",
+    "en": "Planning, manufacturing, and sales of original board and card games",
+    "zh": "原创桌游与卡牌游戏的策划、制造与销售"
+  },
+  "description": {
+    "ja": "2022年設立。社会風刺や日常をテーマにした、手軽で戦略性のあるボードゲーム・カードゲームを企画・製造・販売しています。ゲームマーケットをはじめ国内外の展示会に継続出展しています。",
+    "en": "Founded in 2022. We plan, manufacture, and sell accessible yet strategic board and card games inspired by social satire and everyday life. We regularly exhibit at Game Market and events in Japan and abroad.",
+    "zh": "成立于2022年。我们策划、制造并销售以社会讽刺与日常生活为主题、轻松而富有策略性的桌游与卡牌游戏。持续参加 Game Market 及国内外展会。"
+  },
+  "achievements": [
+    {
+      "ja": "『定時退社』累計出荷 7,000部超（2026年5月時点）",
+      "en": "\"Leave on Time\": over 7,000 units shipped (as of May 2026)",
+      "zh": "《准时下班》累计出货超过7,000部（2026年5月时点）"
+    },
+    {
+      "ja": "シリーズ3作品 累計出荷 約1万部（2026年5月時点・自社集計）",
+      "en": "3-title series: approximately 10,000 units shipped total (as of May 2026, internal count)",
+      "zh": "3款系列作品累计出货约1万部（2026年5月时点·自社统计）"
+    }
+  ],
+  "retailChannels": {
+    "ja": "ハンズ、ロフト、JellyJellyStore、Amazon ほか",
+    "en": "Hands, Loft, JellyJellyStore, Amazon, and others",
+    "zh": "Hands、Loft、JellyJellyStore、Amazon 等"
+  },
+  "eventsDomestic": {
+    "ja": "ゲームマーケット（2022春〜）、Board Game Business Expo Japan、ボドゲガレージ ほか",
+    "en": "Game Market (since 2022 Spring), Board Game Business Expo Japan, Boardgame Garage, and others",
+    "zh": "Game Market（2022春起）、Board Game Business Expo Japan、桌游车库 等"
+  },
+  "eventsInternational": {
+    "ja": "spiel essen 2025（ドイツ）、Taiwan Original Boardgame Expo 2026（台湾）、Gen Con 2026（アメリカ）",
+    "en": "Spiel Essen 2025 (Germany), Taiwan Original Boardgame Expo 2026 (Taiwan), Gen Con 2026 (USA)",
+    "zh": "Spiel Essen 2025（德国）、Taiwan Original Boardgame Expo 2026（台湾）、Gen Con 2026（美国）"
+  },
+  "products": {
+    "ja": "『定時退社』『就職活動』『情報漏洩』の3作品（いずれも7歳以上・短時間プレイ）",
+    "en": "Three titles: Leave on Time, Job Hunting, and Information Leak (ages 7+, short play time)",
+    "zh": "《准时下班》《求职活动》《信息泄露》3款作品（均为7岁以上·短时间游玩）"
+  }
+}
