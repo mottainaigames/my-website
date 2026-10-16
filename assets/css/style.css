@@ -602,46 +602,32 @@ button.btn{
 }
 .btn:hover{background:rgba(125,211,252,0.08)}
 
-.rulebookDialog{
-  width:min(920px, calc(100vw - 24px));
-  max-height:calc(100vh - 24px);
-  margin:auto;
-  padding:0;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:var(--card, #12141c);
-  color:var(--text);
-  box-shadow:0 20px 60px rgba(0,0,0,0.55);
+.rulebookMain{
+  padding-top:12px;
+  padding-bottom:24px;
 }
-.rulebookDialog::backdrop{
-  background:rgba(0,0,0,0.72);
-}
-.rulebookDialogBar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:12px 14px;
-  border-bottom:1px solid var(--line);
-  position:sticky;
-  top:0;
-  background:inherit;
-  z-index:1;
-}
-.rulebookDialogBar h2{
-  margin:0;
-  font-size:1.05em;
-}
-.rulebookCloseBtn{
-  flex:0 0 auto;
-}
-.rulebookGallery{
+.rulebookPage{
   display:flex;
   flex-direction:column;
-  gap:14px;
-  padding:14px;
-  overflow:auto;
-  max-height:calc(100vh - 100px);
+  gap:16px;
+}
+.rulebookPageHead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--line);
+}
+.rulebookPageHead h2{
+  margin:4px 0 0;
+  font-size:1.25em;
+}
+.rulebookPageGallery{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
 }
 .rulebookFigure{
   margin:0;

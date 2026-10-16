@@ -30,14 +30,13 @@ window.MG = (() => {
       "about.lead": "取引・掲載審査の際にご参照いただける情報です。",
       "about.achievementsHeading": "主な実績",
       "about.eventsHeading": "出展・参加",
-      "about.bizNote": "卸売・取引に関するお問い合わせ：",
+      "about.bizNote": "お問い合わせ：",
       "about.label.name": "屋号 / ブランド",
       "about.label.founded": "設立",
       "about.label.representative": "代表者",
       "about.label.address": "所在地",
       "about.label.tel": "電話",
-      "about.label.email": "E-mail（一般）",
-      "about.label.emailBiz": "E-mail（取引）",
+      "about.label.email": "E-mail",
       "about.label.fax": "FAX",
       "about.label.invoice": "インボイス登録番号",
       "about.label.business": "事業内容",
@@ -56,7 +55,6 @@ window.MG = (() => {
       "links.x": "X（旧Twitter）",
       "links.gamemarket": "ゲームマーケット作品ページ",
       "links.mail": "メール",
-      "links.mailBiz": "取引・卸売",
       "games.pageTitle": "Mottainai Games - ゲーム一覧",
       "games.searchPlaceholder": "検索（タイトル・キャッチ・説明）",
       "games.filterAria": "検索と絞り込み",
@@ -77,8 +75,10 @@ window.MG = (() => {
       "game.descriptionHeading": "ゲーム詳細",
       "game.linksHeading": "リンク",
       "game.rules": "ルールブック",
-      "game.rulebookCloseAria": "ルールブックを閉じる",
       "game.rulebookPageAlt": "ルールブック {page}ページ目",
+      "game.rulebookBack": "ゲーム詳細に戻る",
+      "game.rulebookEmpty": "ルールブック画像がありません。",
+      "game.rulebookPageTitle": "Mottainai Games - ルールブック",
       "game.video": "動画",
       "game.shop": "ストア",
       "game.channelsHeading": "販売中",
@@ -148,14 +148,13 @@ window.MG = (() => {
       "about.lead": "Information for wholesale, retail listing, and business inquiries.",
       "about.achievementsHeading": "Key Milestones",
       "about.eventsHeading": "Events & Exhibitions",
-      "about.bizNote": "Wholesale and business inquiries:",
+      "about.bizNote": "Contact:",
       "about.label.name": "Brand",
       "about.label.founded": "Founded",
       "about.label.representative": "Representative",
       "about.label.address": "Address",
       "about.label.tel": "Phone",
-      "about.label.email": "Email (general)",
-      "about.label.emailBiz": "Email (business)",
+      "about.label.email": "Email",
       "about.label.fax": "Fax",
       "about.label.invoice": "Invoice Registration No.",
       "about.label.business": "Business",
@@ -174,7 +173,6 @@ window.MG = (() => {
       "links.x": "X (formerly Twitter)",
       "links.gamemarket": "Game Market Booth Page",
       "links.mail": "Email",
-      "links.mailBiz": "Wholesale / Business",
       "games.pageTitle": "Mottainai Games - Games",
       "games.searchPlaceholder": "Search by title, tagline, or description",
       "games.filterAria": "Search and filters",
@@ -195,8 +193,10 @@ window.MG = (() => {
       "game.descriptionHeading": "Game Details",
       "game.linksHeading": "Links",
       "game.rules": "Rulebook",
-      "game.rulebookCloseAria": "Close rulebook",
       "game.rulebookPageAlt": "Rulebook page {page}",
+      "game.rulebookBack": "Back to game",
+      "game.rulebookEmpty": "No rulebook images available.",
+      "game.rulebookPageTitle": "Mottainai Games - Rulebook",
       "game.video": "Video",
       "game.shop": "Store",
       "game.channelsHeading": "Where to buy",
@@ -266,14 +266,13 @@ window.MG = (() => {
       "about.lead": "供交易与上架审核参考的信息。",
       "about.achievementsHeading": "主要业绩",
       "about.eventsHeading": "参展与活动",
-      "about.bizNote": "批发与交易咨询：",
+      "about.bizNote": "联系方式：",
       "about.label.name": "品牌",
       "about.label.founded": "成立",
       "about.label.representative": "代表",
       "about.label.address": "地址",
       "about.label.tel": "电话",
-      "about.label.email": "邮箱（一般）",
-      "about.label.emailBiz": "邮箱（商务）",
+      "about.label.email": "邮箱",
       "about.label.fax": "传真",
       "about.label.invoice": "发票注册号",
       "about.label.business": "业务内容",
@@ -292,7 +291,6 @@ window.MG = (() => {
       "links.x": "X（原 Twitter）",
       "links.gamemarket": "Game Market 展位页面",
       "links.mail": "邮箱",
-      "links.mailBiz": "批发·商务",
       "games.pageTitle": "Mottainai Games - 游戏列表",
       "games.searchPlaceholder": "按标题、副标题或说明搜索",
       "games.filterAria": "搜索与筛选",
@@ -313,8 +311,10 @@ window.MG = (() => {
       "game.descriptionHeading": "游戏详情",
       "game.linksHeading": "相关链接",
       "game.rules": "规则书",
-      "game.rulebookCloseAria": "关闭规则书",
       "game.rulebookPageAlt": "规则书第{page}页",
+      "game.rulebookBack": "返回游戏详情",
+      "game.rulebookEmpty": "暂无规则书图片。",
+      "game.rulebookPageTitle": "Mottainai Games - 规则书",
       "game.video": "视频",
       "game.shop": "商店",
       "game.channelsHeading": "购买渠道",
@@ -605,7 +605,7 @@ window.MG = (() => {
       else a.removeAttribute("aria-current");
     });
 
-    const keepLangLinks = document.querySelectorAll('a[href="index.html"], a[href="games.html"], a[href="news.html"], a[href="about.html"], a[href="contact.html"]');
+    const keepLangLinks = document.querySelectorAll('a[href="index.html"], a[href="games.html"], a[href="news.html"], a[href="about.html"], a[href="contact.html"], a[href="rulebook.html"]');
     keepLangLinks.forEach(a => {
       const href = a.getAttribute("href");
       if (!href) return;
@@ -695,7 +695,7 @@ window.MG = (() => {
       const tabLang = a.getAttribute("data-lang");
       const url = new URL(current.href);
       url.searchParams.set("lang", tabLang);
-      if (path === "game.html" && id) {
+      if ((path === "game.html" || path === "rulebook.html" || path === "news-detail.html") && id) {
         url.searchParams.set("id", id);
       }
       a.setAttribute("href", `${url.pathname}${url.search}${url.hash}`);
@@ -1332,42 +1332,86 @@ window.MG = (() => {
 
     btn.textContent = t(lang, "game.rules");
     btn.onclick = null;
-    btn.removeAttribute("href");
-    btn.removeAttribute("target");
-    btn.removeAttribute("rel");
 
-    if(images.length > 0){
+    if(images.length > 0 && g.id){
       btn.hidden = false;
       btn.style.display = "inline-block";
-      btn.onclick = () => openRulebookDialog(images, lang);
+      btn.removeAttribute("target");
+      btn.removeAttribute("rel");
+      btn.setAttribute("href", `rulebook.html?id=${encodeURIComponent(g.id)}&lang=${lang}`);
       return;
     }
 
     if(pdf){
-      // PDF等の外部URLがある場合は新規タブで開く
       btn.hidden = false;
       btn.style.display = "inline-block";
-      btn.onclick = () => {
-        window.open(pdf, "_blank", "noopener,noreferrer");
-      };
+      btn.setAttribute("href", pdf);
+      btn.setAttribute("target", "_blank");
+      btn.setAttribute("rel", "noopener");
       return;
     }
 
     btn.hidden = true;
     btn.style.display = "none";
+    btn.removeAttribute("href");
   }
 
-  function openRulebookDialog(images, lang){
-    const dialog = document.getElementById("rulebookDialog");
-    const gallery = document.getElementById("rulebookGallery");
-    const closeBtn = document.getElementById("rulebookCloseBtn");
-    const title = document.getElementById("rulebookDialogTitle");
-    if(!dialog || !gallery) return;
+  async function renderRulebookPage(){
+    const lang = getLang();
+    applyCommonHeaderState(lang);
 
-    if(title) title.textContent = t(lang, "game.rules");
-    if(closeBtn) closeBtn.setAttribute("aria-label", t(lang, "game.rulebookCloseAria"));
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    const titleEl = document.getElementById("rulebookTitle");
+    const gameTitleEl = document.getElementById("rulebookGameTitle");
+    const gallery = document.getElementById("rulebookGallery");
+    const empty = document.getElementById("rulebookEmpty");
+    const back = document.getElementById("rulebookBackLink");
+
+    if(titleEl) titleEl.textContent = t(lang, "game.rules");
+    if(back){
+      back.textContent = t(lang, "game.rulebookBack");
+      back.setAttribute("href", id ? `game.html?id=${encodeURIComponent(id)}&lang=${lang}` : `games.html?lang=${lang}`);
+    }
+
+    if(!id || !gallery){
+      document.title = t(lang, "game.rulebookPageTitle");
+      if(empty){
+        empty.hidden = false;
+        empty.textContent = t(lang, "game.rulebookEmpty");
+      }
+      return;
+    }
+
+    let g;
+    try { g = localizeGame(await loadGame(id), lang); }
+    catch(_){
+      document.title = t(lang, "game.rulebookPageTitle");
+      if(gameTitleEl) gameTitleEl.textContent = t(lang, "game.loadError");
+      if(empty){
+        empty.hidden = false;
+        empty.textContent = t(lang, "game.rulebookEmpty");
+      }
+      return;
+    }
+
+    document.title = `${t(lang, "game.pageTitlePrefix")}${g.title || ""} - ${t(lang, "game.rules")}`;
+    if(gameTitleEl) gameTitleEl.textContent = g.title || "";
+
+    const images = (Array.isArray(g.links?.rulesImages) ? g.links.rulesImages : [])
+      .map(src => (typeof src === "string" ? src.trim() : ""))
+      .filter(nonEmpty);
 
     gallery.innerHTML = "";
+    if(images.length === 0){
+      if(empty){
+        empty.hidden = false;
+        empty.textContent = t(lang, "game.rulebookEmpty");
+      }
+      return;
+    }
+
+    if(empty) empty.hidden = true;
     images.forEach((src, idx) => {
       const figure = document.createElement("figure");
       figure.className = "rulebookFigure";
@@ -1378,20 +1422,6 @@ window.MG = (() => {
       figure.appendChild(img);
       gallery.appendChild(figure);
     });
-
-    if(typeof dialog.showModal === "function") dialog.showModal();
-    else dialog.setAttribute("open", "");
-
-    const onClose = () => {
-      if(typeof dialog.close === "function") dialog.close();
-      else dialog.removeAttribute("open");
-    };
-    if(closeBtn){
-      closeBtn.onclick = onClose;
-    }
-    dialog.onclick = (e) => {
-      if(e.target === dialog) onClose();
-    };
   }
 
   async function renderGame(){
@@ -1542,7 +1572,7 @@ window.MG = (() => {
     const table = document.getElementById("companyTable");
     const achievements = document.getElementById("aboutAchievements");
     const events = document.getElementById("aboutEvents");
-    const bizEmail = document.getElementById("aboutBizEmail");
+    const contactEmail = document.getElementById("aboutContactEmail");
     if(!table) return;
 
     let data;
@@ -1562,14 +1592,9 @@ window.MG = (() => {
     addCompanyRow(table, "about.label.representative", companyField(data, "representative", lang), lang);
     addCompanyRow(table, "about.label.address", companyField(data, "address", lang), lang);
     addCompanyRow(table, "about.label.tel", data.tel, lang);
-    if(nonEmpty(data.emailGeneral)){
+    if(nonEmpty(data.email)){
       const row = document.createElement("tr");
-      row.innerHTML = `<th>${t(lang, "about.label.email")}</th><td><a href="mailto:${data.emailGeneral}">${data.emailGeneral}</a></td>`;
-      table.appendChild(row);
-    }
-    if(nonEmpty(data.emailBiz)){
-      const row = document.createElement("tr");
-      row.innerHTML = `<th>${t(lang, "about.label.emailBiz")}</th><td><a href="mailto:${data.emailBiz}">${data.emailBiz}</a></td>`;
+      row.innerHTML = `<th>${t(lang, "about.label.email")}</th><td><a href="mailto:${data.email}">${data.email}</a></td>`;
       table.appendChild(row);
     }
     addCompanyRow(table, "about.label.fax", companyField(data, "fax", lang), lang);
@@ -1607,11 +1632,11 @@ window.MG = (() => {
       }
     }
 
-    if(bizEmail && nonEmpty(data.emailBiz)){
-      bizEmail.href = `mailto:${data.emailBiz}`;
-      bizEmail.textContent = data.emailBiz;
+    if(contactEmail && nonEmpty(data.email)){
+      contactEmail.href = `mailto:${data.email}`;
+      contactEmail.textContent = data.email;
     }
   }
 
-  return { renderGamesList, renderHome, renderGame, renderNewsPage, renderNewsDetailPage, renderContactPage, renderAboutPage };
+  return { renderGamesList, renderHome, renderGame, renderRulebookPage, renderNewsPage, renderNewsDetailPage, renderContactPage, renderAboutPage };
 })();
