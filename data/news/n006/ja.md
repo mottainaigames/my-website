@@ -21,49 +21,57 @@
   margin: 0 0 8px;
 }
 #newsDetailContent .rule-faq-item {
-  margin: 0 0 22px;
-  border: 1px solid rgba(125, 211, 252, 0.22);
-  border-radius: 14px;
-  overflow: hidden;
-  background: rgba(11, 12, 16, 0.34);
+  margin: 0 0 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
 }
 #newsDetailContent .rule-faq-question {
   display: flex;
   align-items: flex-start;
   gap: 16px;
   margin: 0;
-  padding: 22px 24px;
-  background: rgba(125, 211, 252, 0.08);
-  border-bottom: 1px solid rgba(125, 211, 252, 0.16);
+  padding: 0;
+  background: transparent;
+  border: 0;
   color: var(--text, #f3f4f6);
   font-size: clamp(20px, 2vw, 24px);
   font-weight: 700;
   line-height: 1.65;
 }
 #newsDetailContent .rule-faq-number {
-  flex: 0 0 46px;
-  padding: 3px 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   border-radius: 8px;
   background: var(--accent, #7dd3fc);
   color: #0b1720;
   font-size: 18px;
-  line-height: 1.65;
+  line-height: 1;
   text-align: center;
+  white-space: nowrap;
 }
 #newsDetailContent .rule-faq-question-text {
   min-width: 0;
 }
 #newsDetailContent .rule-faq-answer {
   display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
+  grid-template-columns: 40px minmax(0, 1fr);
   gap: 16px;
-  padding: 22px 24px 24px;
+  padding: 16px 0 0;
 }
 #newsDetailContent .rule-faq-answer-label {
   color: var(--accent, #7dd3fc);
   font-size: 20px;
   font-weight: 700;
   line-height: 1.7;
+  text-align: center;
 }
 #newsDetailContent .rule-faq-answer p {
   margin: 0 0 12px;
@@ -95,23 +103,24 @@
     margin-bottom: 22px;
   }
   #newsDetailContent .rule-faq-item {
-    margin-bottom: 18px;
-    border-radius: 12px;
+    margin-bottom: 30px;
   }
   #newsDetailContent .rule-faq-question {
     gap: 12px;
-    padding: 18px 16px;
+    padding: 0;
     font-size: 20px;
     line-height: 1.65;
   }
   #newsDetailContent .rule-faq-number {
-    flex-basis: 38px;
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
     font-size: 16px;
   }
   #newsDetailContent .rule-faq-answer {
-    grid-template-columns: 24px minmax(0, 1fr);
-    gap: 10px;
-    padding: 18px 16px 20px;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px 0 0;
   }
   #newsDetailContent .rule-faq-answer-label {
     font-size: 18px;
@@ -129,7 +138,7 @@
   </div>
 
   <section class="rule-faq-item" aria-labelledby="rule-faq-q1">
-    <h3 class="rule-faq-question" id="rule-faq-q1"><span class="rule-faq-number">Q1．</span><span class="rule-faq-question-text">ゲームの準備で配られたカードは公開しますか？</span></h3>
+    <h3 class="rule-faq-question" id="rule-faq-q1"><span class="rule-faq-number">Q1.</span><span class="rule-faq-question-text">ゲームの準備で配られたカードは公開しますか？</span></h3>
     <div class="rule-faq-answer">
       <span class="rule-faq-answer-label">A．</span>
       <div>
@@ -140,7 +149,7 @@
   </section>
 
   <section class="rule-faq-item" aria-labelledby="rule-faq-q2">
-    <h3 class="rule-faq-question" id="rule-faq-q2"><span class="rule-faq-number">Q2．</span><span class="rule-faq-question-text">青・赤のカードは、自社盤面に複数枚配置できますか？</span></h3>
+    <h3 class="rule-faq-question" id="rule-faq-q2"><span class="rule-faq-number">Q2.</span><span class="rule-faq-question-text">青・赤のカードは、自社盤面に複数枚配置できますか？</span></h3>
     <div class="rule-faq-answer">
       <span class="rule-faq-answer-label">A．</span>
       <div>
@@ -152,7 +161,7 @@
   </section>
 
   <section class="rule-faq-item" aria-labelledby="rule-faq-q3">
-    <h3 class="rule-faq-question" id="rule-faq-q3"><span class="rule-faq-number">Q3．</span><span class="rule-faq-question-text">サイバー攻撃は、サイコロを振ったプレイヤーも受けますか？</span></h3>
+    <h3 class="rule-faq-question" id="rule-faq-q3"><span class="rule-faq-number">Q3.</span><span class="rule-faq-question-text">サイバー攻撃は、サイコロを振ったプレイヤーも受けますか？</span></h3>
     <div class="rule-faq-answer">
       <span class="rule-faq-answer-label">A．</span>
       <div>
@@ -163,7 +172,7 @@
   </section>
 
   <section class="rule-faq-item" aria-labelledby="rule-faq-q4">
-    <h3 class="rule-faq-question" id="rule-faq-q4"><span class="rule-faq-number">Q4．</span><span class="rule-faq-question-text">公開盤面にサイバー攻撃アイコンのあるカードが出た場合、攻撃の処理後は捨札にしますか？</span></h3>
+    <h3 class="rule-faq-question" id="rule-faq-q4"><span class="rule-faq-number">Q4.</span><span class="rule-faq-question-text">公開盤面にサイバー攻撃アイコンのあるカードが出た場合、攻撃の処理後は捨札にしますか？</span></h3>
     <div class="rule-faq-answer">
       <span class="rule-faq-answer-label">A．</span>
       <div>
@@ -174,7 +183,7 @@
   </section>
 
   <section class="rule-faq-item" aria-labelledby="rule-faq-q5">
-    <h3 class="rule-faq-question" id="rule-faq-q5"><span class="rule-faq-number">Q5．</span><span class="rule-faq-question-text">防御カードは、いつ効果を発揮しますか？ また、防御後は捨札にしますか？</span></h3>
+    <h3 class="rule-faq-question" id="rule-faq-q5"><span class="rule-faq-number">Q5.</span><span class="rule-faq-question-text">防御カードは、いつ効果を発揮しますか？ また、防御後は捨札にしますか？</span></h3>
     <div class="rule-faq-answer">
       <span class="rule-faq-answer-label">A．</span>
       <div>
