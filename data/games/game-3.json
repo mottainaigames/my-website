@@ -1,8 +1,8 @@
 {
   "id": "game-3",
   "title": "情報漏洩",
-  "title_en": "Data Leak",
-  "title_zh": "信息泄露",
+  "title_en": "DATA LEAK",
+  "title_zh": "情报泄露",
   "catch": "手軽に遊べる、戦略ダイスゲーム",
   "catch_en": "A quick strategic dice game",
   "catch_zh": "轻松上手的策略型骰子游戏",
@@ -19,11 +19,11 @@
     "桌上游戏"
   ],
   "feature1": "情報漏洩を防げ！㊙を守り抜くダイスゲーム！",
-  "feature1_en": "AVOID DATE LEAK!PROTECTING CONFIDENTAL DICE GAME",
+  "feature1_en": "Stop the data leak! A dice game about guarding your company's secrets!",
   "feature1_zh": "防止信息泄露！坚守公司机密信息的骰子游戏！",
   "description": "あなたの職場は大丈夫？\n日々ニュースで報道される、あの事件たちを追体験！？\nサイコロの出目に運命を翻弄され、最後までわからない！\n全企業人のためのダイスゲーム！",
-  "description_en": "English version coming soon",
-  "description_zh": "中文版即将推出",
+  "description_en": "Is your workplace safe?\nRelive the kind of incidents you see in the news every day!?\nAt the mercy of the dice, no one knows how it will end until the very last roll!\nThe dice game for everyone who works for a company!",
+  "description_zh": "你的职场还安全吗？\n亲身重温每天新闻里报道的那些事件！？\n命运被骰子点数左右，不到最后一刻不知胜负！\n献给所有职场人的骰子游戏！",
   "images": [
     "assets/images/game-3-package1.png", "assets/images/game-3-package4.jpg","assets/images/game-3-package2.jpg","assets/images/game-3-package3.jpg"
   ],
