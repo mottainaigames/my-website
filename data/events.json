@@ -16,9 +16,13 @@
     { "name": "ゲームマーケット2026春", "name_en": "Game Market 2026 Spring", "name_zh": "Game Market 2026 春", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
     { "name": "さっぽろ卓ゲっと2026", "name_en": "Sapporo Taku-Get 2026", "name_zh": "札幌桌游展 2026", "status": "出展", "location": "北海道", "location_en": "Hokkaido", "location_zh": "北海道" },
     { "name": "Taiwan Original Boardgame Expo2026", "name_en": "Taiwan Original Boardgame Expo 2026", "name_zh": "Taiwan Original Boardgame Expo 2026", "status": "出展", "location": "台湾", "location_en": "Taiwan", "location_zh": "台湾" },
-    { "name": "Gen Con2026", "name_en": "Gen Con 2026", "name_zh": "Gen Con 2026", "status": "参加", "location": "アメリカ", "location_en": "USA", "location_zh": "美国" }
+    { "name": "Gen Con2026", "name_en": "Gen Con 2026", "name_zh": "Gen Con 2026", "status": "参加", "location": "アメリカ", "location_en": "USA", "location_zh": "美国" },
+    { "name": "ゲームマーケット2026秋", "name_en": "Game Market 2026 Autumn", "name_zh": "Game Market 2026 秋", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "新潟ボドゲ博3", "name_en": "Niigata Boardgame Expo 3", "name_zh": "新潟桌游博览会 3", "status": "出展", "location": "新潟", "location_en": "Niigata", "location_zh": "新潟" }
   ],
   "upcoming": [
-    { "name": "ゲームマーケット2026秋", "name_en": "Game Market 2026 Autumn", "name_zh": "Game Market 2026　秋", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" }
+    { "name": "ABGF 2026（Asian Board Games Festival）", "name_en": "ABGF 2026 (Asian Board Games Festival)", "name_zh": "ABGF 2026（亚洲桌游节）", "status": "出展", "location": "シンガポール", "location_en": "Singapore", "location_zh": "新加坡" },
+    { "name": "コミックマーケット109", "name_en": "Comic Market 109", "name_zh": "Comic Market 109", "status": "出展", "location": "東京", "location_en": "Tokyo", "location_zh": "东京" },
+    { "name": "Board Game Business Expo Japan2027", "name_en": "Board Game Business Expo Japan 2027", "name_zh": "Board Game Business Expo Japan 2027", "status": "出展", "location": "大阪", "location_en": "Osaka", "location_zh": "大阪" }
   ]
 }
