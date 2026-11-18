@@ -145,8 +145,8 @@
   // 共通OGP画像（assets/images/ogp.png）の代替テキスト（言語別）
   const OGP_ALT = {
     ja: "Mottainai Gamesの社会風刺ボードゲーム『定時退社』『就職活動』『情報漏洩』『不労所得』のパッケージ",
-    en: "Packages of Mottainai Games' satirical board games: Leave on Time, Job Hunting, Data Leak and Passive Income",
-    zh: "Mottainai Games 社会讽刺桌游《准时下班》《求职活动》《信息泄露》《被動收入》的包装"
+    en: "Packages of Mottainai Games' satirical board games: Leave on Time, Job Hunting, DATA LEAK and Passive Income",
+    zh: "Mottainai Games 社会讽刺桌游《准时下班》《求职活动》《情报泄露》《被动收入》的包装"
   };
   const PACKAGE_ALT = {
     ja: name => `ボードゲーム『${name}』のパッケージ`,
