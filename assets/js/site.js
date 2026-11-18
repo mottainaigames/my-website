@@ -378,7 +378,7 @@ window.MG = (() => {
     en: {
       "定時退社": "Leave on Time",
       "就職活動": "Job Hunting",
-      "情報漏洩": "Data Leak",
+      "情報漏洩": "DATA LEAK",
       "手軽に遊べる、戦略ババ抜き": "A quick strategic old-maid style card game",
       "手軽に遊べる、戦略神経衰弱": "A quick strategic memory game",
       "手軽に遊べる、戦略ダイスゲーム": "A quick strategic dice game",
@@ -412,7 +412,7 @@ window.MG = (() => {
     zh: {
       "定時退社": "准时下班",
       "就職活動": "求职活动",
-      "情報漏洩": "信息泄露",
+      "情報漏洩": "情报泄露",
       "手軽に遊べる、戦略ババ抜き": "轻松上手的策略型抽鬼牌游戏",
       "手軽に遊べる、戦略神経衰弱": "轻松上手的策略型记忆配对游戏",
       "手軽に遊べる、戦略ダイスゲーム": "轻松上手的策略型骰子游戏",
