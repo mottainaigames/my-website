@@ -142,6 +142,18 @@
     setLink("alternate", buildUrl(path, params, "ja"), "x-default");
   }
 
+  // 共通OGP画像（assets/images/ogp.png）の代替テキスト（言語別）
+  const OGP_ALT = {
+    ja: "Mottainai Gamesの社会風刺ボードゲーム『定時退社』『就職活動』『情報漏洩』『不労所得』のパッケージ",
+    en: "Packages of Mottainai Games' satirical board games: Leave on Time, Job Hunting, Data Leak and Passive Income",
+    zh: "Mottainai Games 社会讽刺桌游《准时下班》《求职活动》《信息泄露》《被動收入》的包装"
+  };
+  const PACKAGE_ALT = {
+    ja: name => `ボードゲーム『${name}』のパッケージ`,
+    en: name => `Package of the board game ${name}`,
+    zh: name => `桌游《${name}》的包装`
+  };
+
   function apply({ path, params, lang, langs, title, desc, setTitle = true }) {
     const canonicalLang = langs.includes(lang) ? lang : "ja";
     const url = buildUrl(path, params, canonicalLang);
@@ -153,6 +165,7 @@
     upsertMeta("property", "og:title", title || document.title);
     upsertMeta("property", "og:description", desc);
     upsertMeta("property", "og:locale", OG_LOCALE[canonicalLang]);
+    upsertMeta("property", "og:image:alt", OGP_ALT[lang] || OGP_ALT.ja);
     upsertMeta("name", "twitter:title", title || document.title);
     upsertMeta("name", "twitter:description", desc);
   }
@@ -209,8 +222,14 @@
       apply({ path: `/${page}`, params: { id }, lang, langs: LANGS, title: `${name}${page === "rulebook" ? " " + { ja: "ルールブック", en: "Rulebook", zh: "规则书" }[lang] : ""}${SUFFIX[lang]}`, desc, setTitle: false });
       const img = Array.isArray(g.images) && g.images[0];
       if (img) {
+        // 共通OGP（ogp.png・横長）を作品のパッケージ画像（正方形 1254×1254）に差し替え。
+        // 正方形なのでカードは summary に戻し、サイズと代替テキストも合わせる
         upsertMeta("property", "og:image", `${ORIGIN}/${img}`);
+        upsertMeta("property", "og:image:width", "1254");
+        upsertMeta("property", "og:image:height", "1254");
+        upsertMeta("property", "og:image:alt", PACKAGE_ALT[lang](name));
         upsertMeta("name", "twitter:image", `${ORIGIN}/${img}`);
+        upsertMeta("name", "twitter:card", "summary");
       }
       return;
     }
