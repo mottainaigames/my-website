@@ -1,5 +1,3 @@
-Thank you for Game Market 2026 Autumn & upcoming events
-
 Thank you to everyone who visited the Mottainai Games booth at Game Market 2026 Autumn.
 
 We will be exhibiting at the following events. We look forward to seeing you there!
