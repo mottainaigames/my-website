@@ -20,7 +20,7 @@
             "id": "n002",
             "date": "2026-05-16",
             "title_ja": "「定時退社」累計販売1万部突破のお知らせ",
-            "title_en": "\"Leave on Time\" surpasses 10,000 units sold",
+            "title_en": "\"CLOCK OUT!\" surpasses 10,000 units sold",
             "title_zh": "「准时下班」累计销量突破1万部",
             "published": true
         },
@@ -28,16 +28,16 @@
             "id": "n003",
             "date": "2026-05-23",
             "title_ja": "『定時退社』第4版第1刷の一部カードにおける印刷上の不具合について",
-            "title_en": "",
-            "title_zh": "",
+            "title_en": "Notice of a printing defect on some cards in \"CLOCK OUT!\" (Teiji Taisha), 4th edition, 1st printing",
+            "title_zh": "关于《准时下班》第4版第1次印刷部分卡牌的印刷瑕疵",
             "published": true
         },
         {
             "id": "n004",
             "date": "2026-06-14",
             "title_ja": "『情報漏洩』第1版エラッタ",
-            "title_en": "",
-            "title_zh": "",
+            "title_en": "\"DATA LEAK\" (Joho Rouei) 1st edition errata",
+            "title_zh": "《情报泄露》第1版勘误",
             "published": true
         },
         {
@@ -52,8 +52,8 @@
             "id": "n006",
             "date": "2026-10-22",
             "title_ja": "『情報漏洩』ルールに関するQ&A",
-            "title_en": "Q&A Regarding 'Information Leakage' Rules",
-            "title_zh": "關於『資訊外洩』規則的問答",
+            "title_en": "Rules Q&A for \"DATA LEAK\" (Joho Rouei)",
+            "title_zh": "关于《情报泄露》规则的问答",
             "published": true
         },
         {

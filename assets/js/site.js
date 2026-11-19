@@ -17,6 +17,8 @@ window.MG = (() => {
       "nav.news": "News",
       "nav.about": "会社概要",
       "nav.contact": "お問い合わせ",
+      "nav.privacy": "プライバシーポリシー",
+      "privacy.pageTitle": "Mottainai Games - プライバシーポリシー",
       "lang.ja": "日本語",
       "lang.en": "English",
       "lang.zh": "中文",
@@ -87,6 +89,8 @@ window.MG = (() => {
       "game.nextImageAria": "次の画像",
       "game.mainImageAlt": "ゲーム画像",
       "news.pageTitle": "Mottainai Games - News",
+      "newsDetail.pageTitle": "Mottainai Games - お知らせ",
+      "newsDetail.back": "お知らせ一覧に戻る",
       "news.listHeading": "お知らせ一覧",
       "news.listLead": "",
       "news.archiveHeading": "",
@@ -135,13 +139,15 @@ window.MG = (() => {
       "nav.news": "News",
       "nav.about": "About",
       "nav.contact": "Contact",
+      "nav.privacy": "Privacy Policy",
+      "privacy.pageTitle": "Mottainai Games - Privacy Policy",
       "lang.ja": "Japanese",
       "lang.en": "English",
       "lang.zh": "Chinese",
       "product.heading": "Games + About Us",
       "product.lead": "Discover our board games and learn about Mottainai Games.",
       "intro.heading": "About Us",
-      "intro.body": "Founded in 2022. We plan, manufacture, and sell board games themed on social satire and everyday life.<br>Over 10,000 copies of \"Leave on Time\" sold.<br><a href=\"about.html\" data-keep-lang=\"true\">Company profile</a>",
+      "intro.body": "Founded in 2022. We plan, manufacture, and sell board games themed on social satire and everyday life.<br>Over 10,000 copies of \"CLOCK OUT!\" sold.<br><a href=\"about.html\" data-keep-lang=\"true\">Company profile</a>",
       "about.pageTitle": "Mottainai Games - About",
       "about.metaDescription": "Company profile and business information for Mottainai Games.",
       "about.heading": "Company Profile",
@@ -205,6 +211,8 @@ window.MG = (() => {
       "game.nextImageAria": "Next image",
       "game.mainImageAlt": "Game image",
       "news.pageTitle": "Mottainai Games - News",
+      "newsDetail.pageTitle": "Mottainai Games - News",
+      "newsDetail.back": "Back to news",
       "news.listHeading": "News List",
       "news.listLead": "",
       "news.archiveHeading": "",
@@ -253,6 +261,8 @@ window.MG = (() => {
       "nav.news": "资讯",
       "nav.about": "公司概要",
       "nav.contact": "联系",
+      "nav.privacy": "隐私政策",
+      "privacy.pageTitle": "Mottainai Games - 隐私政策",
       "lang.ja": "日语",
       "lang.en": "英语",
       "lang.zh": "中文",
@@ -323,6 +333,8 @@ window.MG = (() => {
       "game.nextImageAria": "下一张图片",
       "game.mainImageAlt": "游戏图片",
       "news.pageTitle": "Mottainai Games - 资讯",
+      "newsDetail.pageTitle": "Mottainai Games - 资讯",
+      "newsDetail.back": "返回资讯列表",
       "news.listHeading": "资讯列表",
       "news.listLead": "",
       "news.archiveHeading": "",
@@ -376,9 +388,9 @@ window.MG = (() => {
 
   const TEXT_MAP = {
     en: {
-      "定時退社": "Leave on Time",
+      "定時退社": "CLOCK OUT!",
       "就職活動": "Job Hunting",
-      "情報漏洩": "Data Leak",
+      "情報漏洩": "DATA LEAK",
       "手軽に遊べる、戦略ババ抜き": "A quick strategic old-maid style card game",
       "手軽に遊べる、戦略神経衰弱": "A quick strategic memory game",
       "手軽に遊べる、戦略ダイスゲーム": "A quick strategic dice game",
@@ -412,7 +424,7 @@ window.MG = (() => {
     zh: {
       "定時退社": "准时下班",
       "就職活動": "求职活动",
-      "情報漏洩": "信息泄露",
+      "情報漏洩": "情报泄露",
       "手軽に遊べる、戦略ババ抜き": "轻松上手的策略型抽鬼牌游戏",
       "手軽に遊べる、戦略神経衰弱": "轻松上手的策略型记忆配对游戏",
       "手軽に遊べる、戦略ダイスゲーム": "轻松上手的策略型骰子游戏",
@@ -1082,7 +1094,10 @@ window.MG = (() => {
     applyCommonHeaderState(lang);
     document.title = t(lang, "newsDetail.pageTitle");
 
-    if (backLink) backLink.href = `news.html?lang=${encodeURIComponent(lang)}`;
+    if (backLink) {
+      backLink.href = `news.html?lang=${encodeURIComponent(lang)}`;
+      backLink.textContent = t(lang, "newsDetail.back");
+    }
 
     // マークダウンファイルを読み込む
     const loadMarkdown = path => fetch(path).then(res => {
@@ -1655,5 +1670,14 @@ window.MG = (() => {
     }
   }
 
-  return { renderGamesList, renderHome, renderGame, renderRulebookPage, renderNewsPage, renderNewsDetailPage, renderContactPage, renderAboutPage };
+  function renderPrivacyPage(){
+    const lang = getLang();
+    applyCommonHeaderState(lang);
+    document.title = t(lang, "privacy.pageTitle");
+    document.querySelectorAll("[data-lang-block]").forEach(node => {
+      node.hidden = node.getAttribute("data-lang-block") !== lang;
+    });
+  }
+
+  return { renderPrivacyPage, renderGamesList, renderHome, renderGame, renderRulebookPage, renderNewsPage, renderNewsDetailPage, renderContactPage, renderAboutPage };
 })();

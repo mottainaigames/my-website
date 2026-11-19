@@ -1,5 +1,3 @@
-感谢参加 Game Market 2026 秋季展及今后的参展计划
-
 感谢各位在 Game Market 2026 秋季展光临 MottainaiGames 的展位。
 
 我们将参加以下展会，期待与您在现场见面！
