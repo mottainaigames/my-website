@@ -8,7 +8,7 @@ We will be exhibiting at the following events. We look forward to seeing you the
 
 - Comic Market 109
   December 29, 2026 / Tokyo Big Sight, West 32ab
-  Featuring our new title "Passive Income" and "Leave on Time".
+  Featuring our new title "Passive Income" and "CLOCK OUT!".
 
 - Board Game Business Expo Japan 2027
   January 16–17, 2027 / Osaka, Booth D-3

@@ -19,8 +19,8 @@
         desc: "Mottainai Gamesは社会風刺や日常をテーマにしたボードゲームを企画・製造・販売しています。『定時退社』（累計販売数1万個突破）、『就職活動』、『情報漏洩』、『不労所得』を紹介します。"
       },
       en: {
-        title: "Mottainai Games | Board games including Leave on Time",
-        desc: "Mottainai Games designs, manufactures and sells board games themed on social satire and everyday life, including Leave on Time (over 10,000 copies sold)."
+        title: "Mottainai Games | Board games including CLOCK OUT!",
+        desc: "Mottainai Games designs, manufactures and sells board games themed on social satire and everyday life, including CLOCK OUT! (over 10,000 copies sold)."
       },
       zh: {
         title: "Mottainai Games｜《准时下班》等原创桌游",
@@ -145,7 +145,7 @@
   // 共通OGP画像（assets/images/ogp.png）の代替テキスト（言語別）
   const OGP_ALT = {
     ja: "Mottainai Gamesの社会風刺ボードゲーム『定時退社』『就職活動』『情報漏洩』『不労所得』のパッケージ",
-    en: "Packages of Mottainai Games' satirical board games: Leave on Time, Job Hunting, DATA LEAK and Passive Income",
+    en: "Packages of Mottainai Games' satirical board games: CLOCK OUT!, Job Hunting, DATA LEAK and Passive Income",
     zh: "Mottainai Games 社会讽刺桌游《准时下班》《求职活动》《情报泄露》《被动收入》的包装"
   };
   const PACKAGE_ALT = {
