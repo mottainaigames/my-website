@@ -17,6 +17,8 @@ window.MG = (() => {
       "nav.news": "News",
       "nav.about": "会社概要",
       "nav.contact": "お問い合わせ",
+      "nav.privacy": "プライバシーポリシー",
+      "privacy.pageTitle": "Mottainai Games - プライバシーポリシー",
       "lang.ja": "日本語",
       "lang.en": "English",
       "lang.zh": "中文",
@@ -137,6 +139,8 @@ window.MG = (() => {
       "nav.news": "News",
       "nav.about": "About",
       "nav.contact": "Contact",
+      "nav.privacy": "Privacy Policy",
+      "privacy.pageTitle": "Mottainai Games - Privacy Policy",
       "lang.ja": "Japanese",
       "lang.en": "English",
       "lang.zh": "Chinese",
@@ -257,6 +261,8 @@ window.MG = (() => {
       "nav.news": "资讯",
       "nav.about": "公司概要",
       "nav.contact": "联系",
+      "nav.privacy": "隐私政策",
+      "privacy.pageTitle": "Mottainai Games - 隐私政策",
       "lang.ja": "日语",
       "lang.en": "英语",
       "lang.zh": "中文",
@@ -1664,5 +1670,14 @@ window.MG = (() => {
     }
   }
 
-  return { renderGamesList, renderHome, renderGame, renderRulebookPage, renderNewsPage, renderNewsDetailPage, renderContactPage, renderAboutPage };
+  function renderPrivacyPage(){
+    const lang = getLang();
+    applyCommonHeaderState(lang);
+    document.title = t(lang, "privacy.pageTitle");
+    document.querySelectorAll("[data-lang-block]").forEach(node => {
+      node.hidden = node.getAttribute("data-lang-block") !== lang;
+    });
+  }
+
+  return { renderPrivacyPage, renderGamesList, renderHome, renderGame, renderRulebookPage, renderNewsPage, renderNewsDetailPage, renderContactPage, renderAboutPage };
 })();
