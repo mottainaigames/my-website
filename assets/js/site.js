@@ -87,6 +87,8 @@ window.MG = (() => {
       "game.nextImageAria": "次の画像",
       "game.mainImageAlt": "ゲーム画像",
       "news.pageTitle": "Mottainai Games - News",
+      "newsDetail.pageTitle": "Mottainai Games - お知らせ",
+      "newsDetail.back": "お知らせ一覧に戻る",
       "news.listHeading": "お知らせ一覧",
       "news.listLead": "",
       "news.archiveHeading": "",
@@ -205,6 +207,8 @@ window.MG = (() => {
       "game.nextImageAria": "Next image",
       "game.mainImageAlt": "Game image",
       "news.pageTitle": "Mottainai Games - News",
+      "newsDetail.pageTitle": "Mottainai Games - News",
+      "newsDetail.back": "Back to news",
       "news.listHeading": "News List",
       "news.listLead": "",
       "news.archiveHeading": "",
@@ -323,6 +327,8 @@ window.MG = (() => {
       "game.nextImageAria": "下一张图片",
       "game.mainImageAlt": "游戏图片",
       "news.pageTitle": "Mottainai Games - 资讯",
+      "newsDetail.pageTitle": "Mottainai Games - 资讯",
+      "newsDetail.back": "返回资讯列表",
       "news.listHeading": "资讯列表",
       "news.listLead": "",
       "news.archiveHeading": "",
@@ -1082,7 +1088,10 @@ window.MG = (() => {
     applyCommonHeaderState(lang);
     document.title = t(lang, "newsDetail.pageTitle");
 
-    if (backLink) backLink.href = `news.html?lang=${encodeURIComponent(lang)}`;
+    if (backLink) {
+      backLink.href = `news.html?lang=${encodeURIComponent(lang)}`;
+      backLink.textContent = t(lang, "newsDetail.back");
+    }
 
     // マークダウンファイルを読み込む
     const loadMarkdown = path => fetch(path).then(res => {
