@@ -143,7 +143,7 @@ window.MG = (() => {
       "product.heading": "Games + About Us",
       "product.lead": "Discover our board games and learn about Mottainai Games.",
       "intro.heading": "About Us",
-      "intro.body": "Founded in 2022. We plan, manufacture, and sell board games themed on social satire and everyday life.<br>Over 10,000 copies of \"Leave on Time\" sold.<br><a href=\"about.html\" data-keep-lang=\"true\">Company profile</a>",
+      "intro.body": "Founded in 2022. We plan, manufacture, and sell board games themed on social satire and everyday life.<br>Over 10,000 copies of \"CLOCK OUT!\" sold.<br><a href=\"about.html\" data-keep-lang=\"true\">Company profile</a>",
       "about.pageTitle": "Mottainai Games - About",
       "about.metaDescription": "Company profile and business information for Mottainai Games.",
       "about.heading": "Company Profile",
@@ -382,7 +382,7 @@ window.MG = (() => {
 
   const TEXT_MAP = {
     en: {
-      "定時退社": "Leave on Time",
+      "定時退社": "CLOCK OUT!",
       "就職活動": "Job Hunting",
       "情報漏洩": "DATA LEAK",
       "手軽に遊べる、戦略ババ抜き": "A quick strategic old-maid style card game",
