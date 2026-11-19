@@ -810,3 +810,4 @@ dd{margin:0}
 }
 /* スマホ専用: assets/css/mobile.css（768px以下で自動読み込み） */
 .for-mobile{display:none !important}
+.privacyPolicy p,.privacyPolicy li{line-height:1.8}
