@@ -1088,6 +1088,10 @@ window.MG = (() => {
     const loadMarkdown = path => fetch(path).then(res => {
       if (!res.ok) throw new Error(path + ' が見つかりません');
       return res.text();
+    }).then(text => {
+      // Cloudflare は存在しないファイルにも index.html を200で返すため、HTML文書が返ったら未作成として扱う
+      if (/^\s*<!doctype html/i.test(text)) throw new Error(path + ' が見つかりません');
+      return text;
     });
 
     marked.setOptions({
